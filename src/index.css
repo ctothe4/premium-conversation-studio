@@ -122,9 +122,9 @@
     @apply font-sans text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300 hover:text-primary;
   }
 
-  /* Step numbers for process section - more dramatic */
+  /* Step numbers for process section - cyan and prominent */
   .step-number {
-    @apply font-display text-[10rem] md:text-[14rem] lg:text-[18rem] font-normal leading-none text-muted/60 select-none uppercase;
+    @apply font-display text-[8rem] md:text-[12rem] lg:text-[16rem] font-normal leading-none text-primary/70 select-none uppercase;
   }
 
   /* Service card - refined */
