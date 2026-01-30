@@ -45,7 +45,7 @@ const Navbar = () => {
               <img 
                 src={logo} 
                 alt="Social Currency" 
-                className="h-24 md:h-32 w-auto" 
+                className="h-20 md:h-28 w-auto" 
                 style={{ imageRendering: 'auto' }}
               />
             </Link>
