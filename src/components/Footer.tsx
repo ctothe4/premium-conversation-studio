@@ -39,7 +39,7 @@ const Footer = () => {
           >
             {/* Tagline */}
             <div>
-              <h3 className="font-serif font-bold text-4xl md:text-5xl lg:text-6xl mb-4">
+              <h3 className="font-display font-normal uppercase text-4xl md:text-5xl lg:text-6xl mb-4">
                 Be the Conversation.
               </h3>
               <p className="body-small text-muted-foreground">
