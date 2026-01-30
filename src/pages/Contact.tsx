@@ -175,10 +175,10 @@ const Contact = () => {
                     Email
                   </h4>
                   <a
-                    href="mailto:hello@socialcurrency.com"
+                    href="mailto:hello@socialcurrency.agency"
                     className="body-large link-underline"
                   >
-                    hello@socialcurrency.com
+                    hello@socialcurrency.agency
                   </a>
                 </div>
 
