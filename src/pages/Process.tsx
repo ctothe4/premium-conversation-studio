@@ -49,13 +49,15 @@ const Process = () => {
       <section className="section-padding">
         <div className="container-editorial">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="max-w-5xl"
           >
-            <h1 className="headline-hero mb-8">Our Process</h1>
-            <p className="body-large text-muted-foreground">
+            <span className="subheadline block mb-8">How We Work</span>
+            <h1 className="headline-hero mb-10">Our Process</h1>
+            <div className="divider-refined mb-10" />
+            <p className="body-large text-muted-foreground max-w-2xl">
               A systematic approach to building brands that matter. Three phases. Clear deliverables. Measurable outcomes.
             </p>
           </motion.div>
@@ -70,30 +72,32 @@ const Process = () => {
           className="border-t border-border"
         >
           <div className="container-editorial section-padding">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
               {/* Step Number */}
-              <div className="lg:col-span-3">
-                <span className="step-number">{step.num}</span>
+              <div className="lg:col-span-4">
+                <span className="step-number block">{step.num}</span>
               </div>
 
               {/* Content */}
-              <div className="lg:col-span-9">
-                <h2 className="headline-section mb-8">{step.title}</h2>
-                <p className="body-large text-muted-foreground mb-12 max-w-2xl">
+              <div className="lg:col-span-8">
+                <span className="subheadline text-primary block mb-6">Phase {step.num}</span>
+                <h2 className="headline-section mb-10">{step.title}</h2>
+                <div className="divider-refined mb-10" />
+                <p className="body-large text-muted-foreground mb-16 max-w-xl">
                   {step.description}
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {step.details.map((detail, detailIndex) => (
                     <motion.div
                       key={detail}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: detailIndex * 0.1 }}
-                      className="flex items-start gap-4"
+                      transition={{ duration: 0.6, delay: detailIndex * 0.1 }}
+                      className="flex items-start gap-5"
                     >
-                      <span className="w-2 h-2 rounded-full bg-primary mt-3 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-3 flex-shrink-0" />
                       <span className="body-regular">{detail}</span>
                     </motion.div>
                   ))}
@@ -105,10 +109,11 @@ const Process = () => {
       ))}
 
       {/* CTA Section */}
-      <AnimatedSection className="section-padding border-t border-border bg-secondary/30">
+      <AnimatedSection className="section-padding border-t border-border bg-secondary/20">
         <div className="container-editorial text-center">
-          <h2 className="headline-section mb-6">Ready to start?</h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-10">
+          <span className="subheadline block mb-8">Get Started</span>
+          <h2 className="headline-section mb-8">Ready to start?</h2>
+          <p className="body-large text-muted-foreground max-w-xl mx-auto mb-14">
             Every successful project starts with a conversation. Let's talk about where you are and where you want to be.
           </p>
           <BookCallButton />
