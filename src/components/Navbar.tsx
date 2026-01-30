@@ -42,7 +42,12 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <img src={logo} alt="Social Currency" className="h-12 md:h-16 w-auto" />
+              <img 
+                src={logo} 
+                alt="Social Currency" 
+                className="h-24 md:h-32 w-auto" 
+                style={{ imageRendering: 'auto' }}
+              />
             </Link>
 
             {/* Desktop Navigation */}
