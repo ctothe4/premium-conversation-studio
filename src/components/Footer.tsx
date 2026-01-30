@@ -50,7 +50,7 @@ const Footer = () => {
             {/* Links */}
             <div className="flex flex-col md:flex-row gap-6 md:gap-12">
               <a
-                href="mailto:hello@socialcurrency.com"
+                href="mailto:hello@socialcurrency.agency"
                 className="nav-link link-underline"
               >
                 Email
