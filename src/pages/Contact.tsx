@@ -44,7 +44,7 @@ const Contact = () => {
           >
             <span className="subheadline block mb-8">Get in Touch</span>
             <h1 className="headline-hero mb-10">
-              It All Starts With a Hello.
+              It All Starts With a <span className="text-primary">Hello.</span>
             </h1>
             <div className="divider-refined mx-auto mb-10" />
             <p className="body-large text-muted-foreground max-w-xl mx-auto">
