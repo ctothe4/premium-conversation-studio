@@ -63,6 +63,14 @@ const Footer = () => {
               >
                 LinkedIn
               </a>
+              <a
+                href="https://instagram.com/socuagency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link link-underline"
+              >
+                Instagram
+              </a>
               <Link to="/contact" className="nav-link link-underline">
                 Contact
               </Link>
