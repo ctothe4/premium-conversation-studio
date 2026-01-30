@@ -26,7 +26,7 @@ const Index = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
               className="headline-hero mb-10 md:mb-14"
             >
-              We Build Systems That Produce Successful Outcomes.
+              We Build Systems That Produce <span className="text-primary">Successful Outcomes.</span>
             </motion.h1>
             <motion.div
               initial={{ opacity: 0 }}
