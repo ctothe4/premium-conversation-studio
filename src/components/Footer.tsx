@@ -55,15 +55,7 @@ const Footer = () => {
                 href="mailto:hello@socialcurrency.agency"
                 className="nav-link link-underline"
               >
-                Email
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link link-underline"
-              >
-                LinkedIn
+                hello@socialcurrency.agency
               </a>
               <a
                 href="https://instagram.com/socuagency"
