@@ -7,13 +7,15 @@ const Footer = () => {
       {/* Final CTA Section */}
       <div className="container-editorial section-padding text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h2 className="headline-section mb-6">Ready to grow?</h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-10">
+          <span className="subheadline block mb-8">Next Step</span>
+          <h2 className="headline-section mb-8">Ready to grow?</h2>
+          <div className="divider-refined mx-auto mb-10" />
+          <p className="body-large text-muted-foreground max-w-xl mx-auto mb-14">
             Let's talk about your project and see if we're a fit.
           </p>
           <a
@@ -29,17 +31,17 @@ const Footer = () => {
 
       {/* Main Footer */}
       <div className="border-t border-border">
-        <div className="container-editorial py-16 md:py-24">
+        <div className="container-editorial py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12"
+            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16"
           >
             {/* Tagline */}
             <div>
-              <h3 className="font-display font-normal uppercase text-4xl md:text-5xl lg:text-6xl mb-4">
+              <h3 className="headline-section mb-6">
                 Be the Conversation.
               </h3>
               <p className="body-small text-muted-foreground">
@@ -48,7 +50,7 @@ const Footer = () => {
             </div>
 
             {/* Links */}
-            <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-14">
               <a
                 href="mailto:hello@socialcurrency.agency"
                 className="nav-link link-underline"

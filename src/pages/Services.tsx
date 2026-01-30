@@ -5,31 +5,37 @@ import BookCallButton from "@/components/BookCallButton";
 
 const services = [
   {
+    num: "01",
     title: "Brand Positioning & Strategy",
     description:
       "We identify and clearly define your unique voice and market edge. We amplify your voice and reach to make your brand unavoidable.",
   },
   {
+    num: "02",
     title: "Funnel & Landing Design",
     description:
       "High conversion entry points. We build the pages that turn visitors into committed clients, with minimal friction.",
   },
   {
+    num: "03",
     title: "Systems & Automations",
     description:
       "Operational velocity. We engineer the backend tools that handle your growth while you focus on building your business and brand.",
   },
   {
+    num: "04",
     title: "Brand Identity",
     description:
       "Visual authority. We create the logos and design systems that signal premium quality.",
   },
   {
-    title: "UGC & Video Content Design",
+    num: "05",
+    title: "UGC & Video Content",
     description:
       "Social proof that converts. We design video assets that feel human and drive engagement across multiple platforms.",
   },
   {
+    num: "06",
     title: "Content Design & Strategy",
     description:
       "Precision messaging. We build the content loops that keep your brand relevant and top of mind for your target market.",
@@ -43,13 +49,15 @@ const Services = () => {
       <section className="section-padding">
         <div className="container-editorial">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="max-w-5xl"
           >
-            <h1 className="headline-hero mb-8">Services</h1>
-            <p className="body-large text-muted-foreground">
+            <span className="subheadline block mb-8">What We Do</span>
+            <h1 className="headline-hero mb-10">Services</h1>
+            <div className="divider-refined mb-10" />
+            <p className="body-large text-muted-foreground max-w-2xl">
               Everything you need to build, launch, and scale a brand that people remember.
             </p>
           </motion.div>
@@ -58,23 +66,22 @@ const Services = () => {
 
       {/* Services Grid */}
       <AnimatedSection className="border-t border-border">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container-editorial py-20 md:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="service-card px-0 md:px-8 first:md:pl-0 border-b md:border-b-0 md:border-r last:border-r-0 border-border"
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                className="border-b border-border lg:odd:border-r lg:odd:pr-16 lg:even:pl-16 py-16 md:py-20 group"
               >
-                <div className="py-12 md:py-16">
-                  <h3 className="headline-card mb-6">{service.title}</h3>
-                  <p className="body-regular text-muted-foreground">
-                    {service.description}
-                  </p>
-                </div>
+                <span className="subheadline text-primary block mb-6">{service.num}</span>
+                <h3 className="headline-card mb-6 group-hover:text-primary transition-colors duration-500">{service.title}</h3>
+                <p className="body-regular text-muted-foreground max-w-md">
+                  {service.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -84,9 +91,11 @@ const Services = () => {
       {/* Additional Details */}
       <AnimatedSection className="section-padding border-t border-border">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             <div>
-              <h2 className="headline-section mb-8">How we work</h2>
+              <span className="subheadline block mb-6">Approach</span>
+              <h2 className="headline-section mb-10">How we work</h2>
+              <div className="divider-refined mb-10" />
               <p className="body-large text-muted-foreground mb-8">
                 We don't do cookie cutter solutions. Every project starts with understanding your specific situation, your goals, and your constraints.
               </p>
@@ -95,8 +104,10 @@ const Services = () => {
               </p>
             </div>
             <div>
-              <h2 className="headline-section mb-8">What you get</h2>
-              <ul className="space-y-6">
+              <span className="subheadline block mb-6">Deliverables</span>
+              <h2 className="headline-section mb-10">What you get</h2>
+              <div className="divider-refined mb-10" />
+              <ul className="space-y-8">
                 {[
                   "Direct access to senior strategists and builders",
                   "Weekly progress updates and milestone reviews",
@@ -108,10 +119,10 @@ const Services = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-start gap-4"
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="flex items-start gap-5"
                   >
-                    <span className="w-2 h-2 rounded-full bg-primary mt-3 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-3 flex-shrink-0" />
                     <span className="body-regular">{item}</span>
                   </motion.li>
                 ))}
@@ -122,10 +133,11 @@ const Services = () => {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <AnimatedSection className="section-padding border-t border-border bg-secondary/30">
+      <AnimatedSection className="section-padding border-t border-border bg-secondary/20">
         <div className="container-editorial text-center">
-          <h2 className="headline-section mb-6">Let's build something.</h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-10">
+          <span className="subheadline block mb-8">Get Started</span>
+          <h2 className="headline-section mb-8">Let's build something.</h2>
+          <p className="body-large text-muted-foreground max-w-xl mx-auto mb-14">
             Tell us about your project and we'll show you how we can help.
           </p>
           <BookCallButton />

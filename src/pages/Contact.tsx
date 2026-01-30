@@ -16,7 +16,6 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -38,15 +37,17 @@ const Contact = () => {
       <section className="section-padding">
         <div className="container-editorial">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center max-w-5xl mx-auto"
           >
-            <h1 className="headline-hero mb-8">
+            <span className="subheadline block mb-8">Get in Touch</span>
+            <h1 className="headline-hero mb-10">
               It All Starts With a Hello.
             </h1>
-            <p className="body-large text-muted-foreground">
+            <div className="divider-refined mx-auto mb-10" />
+            <p className="body-large text-muted-foreground max-w-xl mx-auto">
               Ready to talk about your next project? We're here to listen.
             </p>
           </motion.div>
@@ -56,18 +57,20 @@ const Contact = () => {
       {/* Contact Grid */}
       <AnimatedSection className="border-t border-border">
         <div className="container-editorial section-padding">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             {/* Contact Form */}
             <div>
-              <h2 className="headline-card mb-8">Send us a message</h2>
+              <span className="subheadline block mb-6">Send a Message</span>
+              <h2 className="headline-card mb-10">Write to us</h2>
+              <div className="divider-refined mb-12" />
 
               {isSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="py-12 border-t border-border"
+                  className="py-16"
                 >
-                  <h3 className="headline-card text-primary mb-4">
+                  <h3 className="headline-card text-primary mb-6">
                     Message sent.
                   </h3>
                   <p className="body-regular text-muted-foreground">
@@ -75,11 +78,11 @@ const Contact = () => {
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-10">
                   <div>
                     <label
                       htmlFor="name"
-                      className="body-small font-medium block mb-3"
+                      className="subheadline block mb-4"
                     >
                       Name
                     </label>
@@ -90,7 +93,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border-b-2 border-border py-4 body-regular focus:outline-none focus:border-primary transition-colors"
+                      className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
                       placeholder="Your name"
                     />
                   </div>
@@ -98,7 +101,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="body-small font-medium block mb-3"
+                      className="subheadline block mb-4"
                     >
                       Email
                     </label>
@@ -109,7 +112,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border-b-2 border-border py-4 body-regular focus:outline-none focus:border-primary transition-colors"
+                      className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -117,7 +120,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="message"
-                      className="body-small font-medium block mb-3"
+                      className="subheadline block mb-4"
                     >
                       Message
                     </label>
@@ -128,7 +131,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full bg-transparent border-b-2 border-border py-4 body-regular focus:outline-none focus:border-primary transition-colors resize-none"
+                      className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -146,8 +149,10 @@ const Contact = () => {
 
             {/* Calendly Section */}
             <div>
-              <h2 className="headline-card mb-8">Book a call</h2>
-              <p className="body-regular text-muted-foreground mb-8">
+              <span className="subheadline block mb-6">Schedule a Call</span>
+              <h2 className="headline-card mb-10">Book a call</h2>
+              <div className="divider-refined mb-12" />
+              <p className="body-regular text-muted-foreground mb-12">
                 Prefer to talk? Schedule a free 15 minute call and let's discuss your project in person.
               </p>
 
@@ -155,25 +160,25 @@ const Contact = () => {
                 href="https://calendly.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 py-8 border-t border-b border-border hover:border-primary transition-colors"
+                className="group flex items-center gap-6 py-10 border-t border-b border-border hover:border-primary transition-colors duration-500"
               >
                 <div className="flex-1">
-                  <h3 className="headline-card group-hover:text-primary transition-colors">
+                  <h3 className="headline-card group-hover:text-primary transition-colors duration-500">
                     15 Minute Discovery Call
                   </h3>
-                  <p className="body-small text-muted-foreground mt-2">
+                  <p className="subheadline mt-3">
                     Via Calendly
                   </p>
                 </div>
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
               </a>
 
               {/* Contact Details */}
-              <div className="mt-16 space-y-8">
+              <div className="mt-20 space-y-12">
                 <div>
-                  <h4 className="body-small font-medium uppercase tracking-widest text-muted-foreground mb-3">
+                  <span className="subheadline block mb-4">
                     Email
-                  </h4>
+                  </span>
                   <a
                     href="mailto:hello@socialcurrency.agency"
                     className="body-large link-underline"
@@ -183,17 +188,27 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <h4 className="body-small font-medium uppercase tracking-widest text-muted-foreground mb-3">
+                  <span className="subheadline block mb-4">
                     Follow
-                  </h4>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="body-large link-underline"
-                  >
-                    LinkedIn
-                  </a>
+                  </span>
+                  <div className="flex gap-8">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="body-large link-underline"
+                    >
+                      LinkedIn
+                    </a>
+                    <a
+                      href="https://instagram.com/socuagency"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="body-large link-underline"
+                    >
+                      Instagram
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
