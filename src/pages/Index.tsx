@@ -40,7 +40,7 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="body-large text-muted-foreground max-w-2xl mb-14"
             >
-              Social Currency is a creative agency "in the cloud", with a global, remote team. We help businesses and brands grow by building better digital tools and creating stories that actually produce real results. We design the tools and systems that turn <em className="italic">attention</em> into a <strong className="font-semibold text-foreground">business asset</strong>.
+              We help businesses and brands grow by building better digital tools and creating stories that actually produce real results. We design the tools and systems that turn <em className="italic">attention</em> into a <strong className="font-semibold text-foreground">business asset</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
