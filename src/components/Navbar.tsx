@@ -5,10 +5,11 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Process", path: "/process" },
-  { name: "Services", path: "/services" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/", external: false },
+  { name: "Process", path: "/process", external: false },
+  { name: "Services", path: "/services", external: false },
+  { name: "Nation Branders", path: "https://socialcurrency.agency/nationbranders", external: true },
+  { name: "Contact", path: "/contact", external: false },
 ];
 
 const Navbar = () => {
@@ -53,15 +54,27 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-10">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`nav-link link-underline ${
-                    location.pathname === item.path ? "text-primary" : ""
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-link link-underline"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`nav-link link-underline ${
+                      location.pathname === item.path ? "text-primary" : ""
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
@@ -96,14 +109,25 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
-                      to={item.path}
-                      className={`headline-card ${
-                        location.pathname === item.path ? "text-primary" : ""
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
+                    {item.external ? (
+                      <a
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="headline-card"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className={`headline-card ${
+                          location.pathname === item.path ? "text-primary" : ""
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
                 <motion.div
