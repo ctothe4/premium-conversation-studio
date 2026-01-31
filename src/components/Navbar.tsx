@@ -8,6 +8,7 @@ const navItems = [
   { name: "Home", path: "/", external: false },
   { name: "Process", path: "/process", external: false },
   { name: "Services", path: "/services", external: false },
+  { name: "Pricing", path: "/pricing", external: false },
 ];
 
 const Navbar = () => {
