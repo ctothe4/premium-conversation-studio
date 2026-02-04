@@ -100,7 +100,7 @@ const Pricing = () => {
                     For founder-led businesses and teams ready to redesign how they operate.
                   </p>
                   <div className="border-t border-border pt-6 mb-8">
-                    <span className="font-display text-5xl lg:text-6xl">Starting at $4,99</span>
+                    <span className="font-display text-5xl lg:text-6xl">Starting at $4,999</span>
                   </div>
                   <p className="body-regular text-muted-foreground mb-10">
                     Strategic AI advisory focused on redesigning your organization's operating model. We diagnose how your business currently functions, identify where intelligence can be automated or augmented, and design custom human + AI systems.
