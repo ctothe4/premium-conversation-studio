@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+
+const advisoryFeatures = [
+  "AI Business Audit",
+  "Systems and workflow mapping",
+  "Operational diagnosis",
+  "AI opportunity matrix",
+  "Strategic roadmap and recommendations",
+];
 
 const pricingTiers = [
   {
@@ -59,13 +67,13 @@ const Pricing = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="section-padding">
+      <section className="section-padding pb-16">
         <div className="container-editorial">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
             <p className="subheadline mb-6">Pricing</p>
             <h1 className="headline-section mb-8">
@@ -75,6 +83,92 @@ const Pricing = () => {
             </h1>
             <p className="body-large text-muted-foreground max-w-2xl mx-auto">
               No contracts. No long-term commitments. Just results.
+            </p>
+          </motion.div>
+
+          {/* Filtering Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-center mb-20 border-t border-b border-border py-16"
+          >
+            <p className="subheadline text-primary mb-6">For Teams Ready to Think Bigger</p>
+            <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-4">
+              Not every business needs AI.
+              <br />
+              But every modern organization eventually needs better systems.
+            </p>
+            <p className="body-regular text-muted-foreground max-w-2xl mx-auto">
+              Our AI Systems Advisory is designed for founder-led companies and teams who feel operational friction, complexity, or inefficiency. And want to redesign how their organization actually works.
+            </p>
+          </motion.div>
+
+          {/* AI Systems Advisory - Premium Tier */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mb-24"
+          >
+            <div className="relative border-2 border-primary bg-gradient-to-b from-primary/10 to-transparent p-10 lg:p-14">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground px-6 py-2 text-xs uppercase tracking-[0.2em] font-semibold">
+                  Premium Advisory
+                </span>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <div>
+                  <h2 className="headline-section mb-4">AI Systems Advisory</h2>
+                  <p className="body-large text-muted-foreground mb-8">
+                    For founder-led businesses and teams ready to redesign how they operate.
+                  </p>
+                  <div className="border-t border-border pt-6 mb-8">
+                    <span className="font-display text-5xl lg:text-6xl">Starting at $5,000</span>
+                  </div>
+                  <p className="body-regular text-muted-foreground mb-10">
+                    Strategic AI advisory focused on redesigning your organization's operating model. We diagnose how your business currently functions, identify where intelligence can be automated or augmented, and design custom human + AI systems.
+                  </p>
+                  <a
+                    href="https://calendly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center gap-3"
+                  >
+                    Apply for AI Advisory
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <p className="body-small text-muted-foreground mt-6">
+                    Strategic diagnostic. No tools, no templates. Systems-level thinking.
+                  </p>
+                </div>
+                
+                <div>
+                  <p className="subheadline mb-6">What's Included</p>
+                  <ul className="space-y-5">
+                    {advisoryFeatures.map((feature) => (
+                      <li key={feature} className="flex items-start gap-4">
+                        <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="body-regular">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Digital Services Section Header */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mb-12"
+          >
+            <p className="subheadline text-muted-foreground mb-4">Digital Services</p>
+            <p className="body-regular text-muted-foreground max-w-xl mx-auto">
+              For businesses building their digital presence and growth infrastructure.
             </p>
           </motion.div>
 
