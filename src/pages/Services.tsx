@@ -18,9 +18,9 @@ const services = [
   },
   {
     num: "03",
-    title: "Systems & Automations",
+    title: "AI Operating Systems & Intelligent Automation",
     description:
-      "Operational velocity. We engineer the backend tools that handle your growth while you focus on building your business and brand.",
+      "Operational intelligence. We design AI-powered systems that redesign how your business thinks, decides, and operates. From internal workflows and decision support to knowledge systems and human + machine collaboration.",
   },
   {
     num: "04",
@@ -97,6 +97,9 @@ const Services = () => {
               <h2 className="headline-section mb-10">How we work</h2>
               <div className="divider-refined mb-10" />
               <p className="body-large text-muted-foreground mb-8">
+                We approach every engagement as a systems design problem. Understanding how your organization currently functions before redesigning how it should operate.
+              </p>
+              <p className="body-regular text-muted-foreground mb-8">
                 We don't do cookie cutter solutions. Every project starts with understanding your specific situation, your goals, and your constraints.
               </p>
               <p className="body-regular text-muted-foreground">
