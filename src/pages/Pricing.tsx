@@ -1,204 +1,293 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import AnimatedSection from "@/components/AnimatedSection";
 import { Check, ArrowRight } from "lucide-react";
-const advisoryFeatures = ["AI Business Audit", "Systems and workflow mapping", "Operational diagnosis", "AI opportunity matrix", "Strategic roadmap and recommendations"];
-const pricingTiers = [{
-  name: "Digital Fix",
-  price: "$499",
-  frequency: "one-time",
-  tagline: "Best for getting online fast, or upgrading your online presence",
-  features: ["1-page modern website", "Mobile-first design", "Click-to-call", "WhatsApp button", "Google Maps embed", "Basic SEO", "Hosting setup", "Domain connection"],
-  popular: false
-}, {
-  name: "Growth System",
-  price: "$699",
-  frequency: "one-time",
-  tagline: "Turn visitors into leads",
-  features: ["Everything in Digital Fix", "Contact form", "Booking calendar", "Lead capture", "Email notifications", "Google Analytics", "CRM setup (Airtable/Notion)"],
-  popular: true
-}, {
-  name: "Revenue Engine",
-  price: "$999–$1,499",
-  frequency: "one-time",
-  tagline: "For businesses ready to scale",
-  features: ["Everything in Growth System", "Payments", "Invoicing", "Review automation", "WhatsApp flows", "AI chatbot", "Basic marketing automation"],
-  popular: false
-}];
+
 const Pricing = () => {
-  return <Layout>
-      {/* Hero Section */}
+  return (
+    <Layout>
+      {/* Orientation Section */}
       <section className="section-padding pb-16">
         <div className="container-editorial">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          ease: "easeOut"
-        }} className="text-center mb-16">
-            <p className="subheadline mb-6">Pricing</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
             <h1 className="headline-section mb-8">
-              Simple, Transparent
+              Choose the right system for
               <br />
-              <span className="text-primary">Pricing</span>
+              <span className="text-primary">where your business is today</span>
             </h1>
-            <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              No contracts. No long-term commitments. Just results.
-            </p>
-          </motion.div>
-
-          {/* Filtering Section */}
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.2,
-          ease: "easeOut"
-        }} className="text-center mb-20 border-t border-b border-border py-16">
-            <p className="subheadline text-primary mb-6">For Teams Ready to Think Bigger</p>
             <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-4">
-              Not every business needs AI.
-              <br />
-              But every modern organization eventually needs better systems.
+              Everything we build follows the same order:
             </p>
-            <p className="body-regular text-muted-foreground max-w-2xl mx-auto">
-              Our AI Systems Advisory is designed for founder-led companies and teams who feel operational friction, complexity, or inefficiency. And want to redesign how their organization actually works.
+            <p className="font-display text-2xl md:text-3xl mb-8">
+              Foundation → Growth → Leverage
+            </p>
+            <p className="body-regular text-muted-foreground max-w-xl mx-auto">
+              If you're not sure where to start, book a free call and we'll point you in the right direction.
             </p>
           </motion.div>
 
-          {/* AI Systems Advisory - Premium Tier */}
-          <motion.div initial={{
-          opacity: 0,
-          y: 40
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8,
-          delay: 0.3,
-          ease: "easeOut"
-        }} className="mb-24">
-            <div className="relative border-2 border-primary bg-gradient-to-b from-primary/10 to-transparent p-10 lg:p-14">
+          {/* Growth System - Most Popular */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mb-12"
+          >
+            <div className="relative border-2 border-primary bg-primary/5 p-10 lg:p-14">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="bg-primary text-primary-foreground px-6 py-2 text-xs uppercase tracking-[0.2em] font-semibold">
-                  Premium Advisory
+                  Most Popular
                 </span>
               </div>
-              
+
               <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
                 <div>
-                  <h2 className="headline-section mb-4">AI Systems Advisory</h2>
-                  <p className="body-large text-muted-foreground mb-8">
-                    For founder-led businesses and teams ready to redesign how they operate.
+                  <h2 className="headline-section mb-2">Growth System</h2>
+                  <p className="body-large text-muted-foreground mb-6">
+                    Turn visitors into leads
                   </p>
-                  <div className="border-t border-border pt-6 mb-8">
-                    <span className="font-display text-5xl lg:text-6xl">Starting at $4,999</span>
+                  <div className="border-t border-border pt-6 mb-6">
+                    <span className="font-display text-5xl lg:text-6xl">$699</span>
+                    <span className="text-muted-foreground ml-2">one-time</span>
                   </div>
-                  <p className="body-regular text-muted-foreground mb-10">
-                    Strategic AI advisory focused on redesigning your organization's operating model. We diagnose how your business currently functions, identify where intelligence can be automated or augmented, and design custom human + AI systems.
+                  <p className="body-regular text-muted-foreground mb-8">
+                    For businesses with a solid website foundation that want it to produce real inquiries.
                   </p>
-                  <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-3">
-                    Apply for AI Advisory
+                  <a
+                    href="https://calendly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center gap-3"
+                  >
+                    Add a Growth Layer
                     <ArrowRight className="w-4 h-4" />
                   </a>
                   <p className="body-small text-muted-foreground mt-6">
-                    Strategic diagnostic. No tools, no templates. Systems-level thinking.
+                    Assumes you already have a credible website. If you don't, start with a foundation first.
                   </p>
                 </div>
-                
+
                 <div>
                   <p className="subheadline mb-6">What's Included</p>
-                  <ul className="space-y-5">
-                    {advisoryFeatures.map(feature => <li key={feature} className="flex items-start gap-4">
-                        <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <ul className="space-y-4">
+                    {[
+                      "Conversion-ready contact form",
+                      "Booking calendar integration",
+                      "Lead capture + email notifications",
+                      "Google Analytics setup",
+                      "Lightweight CRM setup (Airtable or Notion)",
+                    ].map((feature) => (
+                      <li key={feature} className="flex items-start gap-4">
+                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <span className="body-regular">{feature}</span>
-                      </li>)}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Digital Services Section Header */}
-          <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          duration: 0.6,
-          delay: 0.4
-        }} className="text-center mb-12">
-            <p className="subheadline text-muted-foreground mb-4">Digital Services</p>
-            <p className="body-regular text-muted-foreground max-w-xl mx-auto">
-              For businesses building their digital presence and growth infrastructure.
-            </p>
-          </motion.div>
-
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {pricingTiers.map((tier, index) => <motion.div key={tier.name} initial={{
-            opacity: 0,
-            y: 40
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6,
-            delay: index * 0.15,
-            ease: "easeOut"
-          }} className={`relative border ${tier.popular ? "border-primary bg-primary/5" : "border-border bg-card"} p-8 lg:p-10`}>
-                {tier.popular && <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-1.5 text-xs uppercase tracking-[0.15em] font-semibold">
-                      Most Popular
-                    </span>
-                  </div>}
-
-                <div className="mb-8">
-                  <h3 className="headline-card mb-2">{tier.name}</h3>
-                  <p className="body-small text-muted-foreground mb-6">
-                    {tier.tagline}
+          {/* Revenue Engine */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mb-12"
+          >
+            <div className="border border-border bg-card p-8 lg:p-12">
+              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                <div>
+                  <h2 className="headline-card mb-2">Revenue Engine</h2>
+                  <p className="body-large text-muted-foreground mb-6">
+                    For businesses ready to scale
                   </p>
-                  <div className="border-t border-border pt-6">
-                    <span className="font-display text-4xl lg:text-5xl">{tier.price}</span>
-                    <span className="text-muted-foreground ml-2">{tier.frequency}</span>
+                  <div className="border-t border-border pt-6 mb-6">
+                    <span className="font-display text-4xl lg:text-5xl">$999–$1,499</span>
+                    <span className="text-muted-foreground ml-2">one-time</span>
                   </div>
+                  <p className="body-regular text-muted-foreground mb-8">
+                    Turns your website into an operational revenue assistant that captures, qualifies, and follows up.
+                  </p>
+                  <a
+                    href="https://calendly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center gap-3"
+                  >
+                    Build a Revenue Engine
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <p className="body-small text-muted-foreground mt-6">
+                    Best when your foundation and lead capture are already in place.
+                  </p>
                 </div>
 
-                <ul className="space-y-4 mb-10">
-                  {tier.features.map(feature => <li key={feature} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="body-small">{feature}</span>
-                    </li>)}
-                </ul>
+                <div>
+                  <p className="subheadline mb-6">What's Included</p>
+                  <ul className="space-y-4">
+                    {[
+                      "Everything in Growth System",
+                      "Payments + invoicing",
+                      "Review automation",
+                      "WhatsApp communication flows",
+                      "AI chatbot for inquiries",
+                      "Basic marketing automation",
+                    ].map((feature) => (
+                      <li key={feature} className="flex items-start gap-4">
+                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="body-regular">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-                <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className={`block text-center ${tier.popular ? "btn-primary" : "btn-outline"} w-full`}>
-                  Get Started
+          {/* Digital Fix - De-emphasized */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="mb-16"
+          >
+            <div className="border border-border/60 bg-muted/30 p-6 lg:p-8">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                <div>
+                  <h3 className="text-xl font-display mb-2">Digital Fix</h3>
+                  <p className="body-regular text-muted-foreground mb-4">
+                    Get online fast or clean things up
+                  </p>
+                  <div className="border-t border-border pt-4 mb-4">
+                    <span className="font-display text-3xl">$499</span>
+                    <span className="text-muted-foreground ml-2 text-sm">one-time</span>
+                  </div>
+                  <p className="body-small text-muted-foreground mb-6">
+                    For early-stage businesses that need a quick, functional presence.
+                  </p>
+                  <a
+                    href="https://calendly.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline inline-flex items-center gap-2 text-sm"
+                  >
+                    Quick Fix
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                  <p className="body-small text-muted-foreground mt-4 italic">
+                    This is a quick fix, not a long-term foundation. If you're serious about growth, start with a foundation.
+                  </p>
+                </div>
+
+                <div>
+                  <ul className="space-y-3">
+                    {[
+                      "1-page modern website",
+                      "Mobile-first design",
+                      "Click-to-call + WhatsApp button",
+                      "Google Maps embed",
+                      "Basic SEO",
+                      "Hosting setup + domain connection",
+                    ].map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <Check className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
+                        <span className="body-small text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Foundation Teaser */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className="text-center border-t border-b border-border py-16 mb-16"
+          >
+            <h3 className="headline-card mb-4">Don't have a website yet?</h3>
+            <p className="body-regular text-muted-foreground max-w-2xl mx-auto mb-8">
+              Some businesses need a foundation before growth makes sense. We offer a Digital Foundation designed to establish credibility, ownership, and a base you can build on.
+            </p>
+            <Link
+              to="/foundation"
+              className="btn-outline inline-flex items-center gap-2"
+            >
+              Learn about Digital Foundation
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+
+          {/* AI Systems Advisory - Last, Quiet */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="mb-20"
+          >
+            <div className="border border-border/50 p-8 lg:p-10">
+              <div className="text-center mb-8">
+                <span className="bg-muted text-muted-foreground px-4 py-1.5 text-xs uppercase tracking-[0.15em] font-medium">
+                  Premium Advisory
+                </span>
+              </div>
+
+              <div className="max-w-3xl mx-auto text-center">
+                <h3 className="headline-card mb-2">AI Systems Advisory</h3>
+                <p className="body-regular text-muted-foreground mb-6">
+                  For founder-led businesses redesigning how they operate
+                </p>
+                <div className="mb-6">
+                  <span className="font-display text-3xl">Starting at $4,999</span>
+                </div>
+                <p className="body-regular text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  Strategic AI advisory focused on diagnosing how your business currently functions, identifying where intelligence can be automated or augmented, and designing custom human + AI systems.
+                </p>
+                <a
+                  href="https://calendly.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline inline-flex items-center gap-2"
+                >
+                  Apply for Advisory
+                  <ArrowRight className="w-4 h-4" />
                 </a>
-              </motion.div>)}
-          </div>
+                <p className="body-small text-muted-foreground mt-6 italic">
+                  This is operational redesign, not a marketing package.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <AnimatedSection className="section-padding-sm border-t border-border">
+      {/* Final CTA */}
+      <section className="section-padding-sm border-t border-border">
         <div className="container-editorial text-center">
-          <h2 className="headline-card mb-6">Not sure which plan is right for you?</h2>
+          <h2 className="headline-card mb-4">Not sure what you need?</h2>
           <p className="body-large text-muted-foreground mb-10 max-w-xl mx-auto">
-            Book a free consultation and we'll help you choose the perfect solution for your business.
+            Book a free call and we'll recommend the right starting point in 15 minutes.
           </p>
-          <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
-            Start with a Free Audit
+          <a
+            href="https://calendly.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-block"
+          >
+            Book a Free Call
           </a>
         </div>
-      </AnimatedSection>
-    </Layout>;
+      </section>
+    </Layout>
+  );
 };
+
 export default Pricing;
