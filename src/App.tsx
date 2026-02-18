@@ -10,6 +10,7 @@ import Services from "./pages/Services";
 import Pricing from "./pages/Pricing";
 import Foundation from "./pages/Foundation";
 import AuditReveal from "./pages/AuditReveal";
+import Collaboration from "./pages/Collaboration";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
+          <Route path="/collaboration" element={<Collaboration />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
