@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-const navItems = [
+const baseNavItems = [
   { name: "Home", path: "/", external: false },
   { name: "Process", path: "/process", external: false },
   { name: "Services", path: "/services", external: false },
@@ -16,6 +16,14 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  // Detect Zambia context and prefix internal paths so the same nav works for both sites.
+  const isZambia = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
+  const basePath = isZambia ? "/zambia" : "";
+  const navItems = baseNavItems.map((item) =>
+    item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
+  );
+  const homePath = basePath || "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +50,7 @@ const Navbar = () => {
         <div className="container-editorial">
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
-            <Link to="/" className="flex-shrink-0">
+            <Link to={homePath} className="flex-shrink-0">
               <img 
                 src={logo} 
                 alt="Social Currency" 
