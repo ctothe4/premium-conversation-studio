@@ -11,11 +11,13 @@ import Pricing from "./pages/Pricing";
 import Foundation from "./pages/Foundation";
 import AuditReveal from "./pages/AuditReveal";
 import Collaboration from "./pages/Collaboration";
+import Contact from "./pages/Contact";
 import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
 import ZambiaPricing from "./pages/zambia/Pricing";
 import ZambiaCollaboration from "./pages/zambia/Collaboration";
+import ZambiaContact from "./pages/zambia/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
