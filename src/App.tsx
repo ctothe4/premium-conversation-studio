@@ -37,11 +37,13 @@ const App = () => (
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
           <Route path="/collaboration" element={<Collaboration />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
           <Route path="/zambia/services" element={<ZambiaServices />} />
           <Route path="/zambia/pricing" element={<ZambiaPricing />} />
           <Route path="/zambia/collaboration" element={<ZambiaCollaboration />} />
+          <Route path="/zambia/contact" element={<ZambiaContact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
