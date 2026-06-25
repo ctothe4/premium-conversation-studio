@@ -96,7 +96,7 @@ const ZambiaCollaboration = () => {
             <p className="body-regular text-muted-foreground mb-16">
               Scope, cadence, and investment are all discussed on a call. Because no two partnerships look the same.
             </p>
-            <Link to="/zambia#contact" className="btn-primary inline-block">
+            <Link to="/zambia/contact" className="btn-primary inline-block">
               Start the Conversation →
             </Link>
           </div>
