@@ -15,6 +15,7 @@ import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
 import ZambiaPricing from "./pages/zambia/Pricing";
+import ZambiaCollaboration from "./pages/zambia/Collaboration";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
