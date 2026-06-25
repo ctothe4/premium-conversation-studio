@@ -11,11 +11,13 @@ import Pricing from "./pages/Pricing";
 import Foundation from "./pages/Foundation";
 import AuditReveal from "./pages/AuditReveal";
 import Collaboration from "./pages/Collaboration";
+import Contact from "./pages/Contact";
 import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
 import ZambiaPricing from "./pages/zambia/Pricing";
 import ZambiaCollaboration from "./pages/zambia/Collaboration";
+import ZambiaContact from "./pages/zambia/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,11 +37,13 @@ const App = () => (
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
           <Route path="/collaboration" element={<Collaboration />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
           <Route path="/zambia/services" element={<ZambiaServices />} />
           <Route path="/zambia/pricing" element={<ZambiaPricing />} />
           <Route path="/zambia/collaboration" element={<ZambiaCollaboration />} />
+          <Route path="/zambia/contact" element={<ZambiaContact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

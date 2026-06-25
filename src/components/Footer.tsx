@@ -51,12 +51,12 @@ const Footer = () => {
 
             {/* Links */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-14">
-              <a
-                href="mailto:hello@socialcurrency.agency"
+              <Link
+                to="/contact"
                 className="nav-link link-underline"
               >
                 hello@socialcurrency.agency
-              </a>
+              </Link>
               <a
                 href="https://instagram.com/socuagency"
                 target="_blank"
