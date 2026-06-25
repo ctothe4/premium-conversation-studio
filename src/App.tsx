@@ -39,6 +39,7 @@ const App = () => (
           <Route path="/zambia/process" element={<ZambiaProcess />} />
           <Route path="/zambia/services" element={<ZambiaServices />} />
           <Route path="/zambia/pricing" element={<ZambiaPricing />} />
+          <Route path="/zambia/collaboration" element={<ZambiaCollaboration />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
