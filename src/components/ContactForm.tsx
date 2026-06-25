@@ -1,22 +1,62 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const ContactForm = () => {
+const WEB3FORMS_ACCESS_KEY = "000272ff-ef79-4917-ad5f-4fa9428eeba2";
+
+type Props = {
+  subject?: string;
+};
+
+const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    setError(null);
+
+    try {
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject,
+        from_name: "Social Currency Website",
+        to: "hello@socialcurrency.agency",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      };
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -33,11 +73,14 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
         className="py-16"
       >
-        <h3 className="headline-card text-primary mb-6">Message sent.</h3>
-        <p className="body-regular text-muted-foreground">
-          We'll get back to you within 24 hours.
+        <h3 className="headline-card text-primary mb-6">
+          Consider this the beginning.
+        </h3>
+        <p className="body-large text-muted-foreground">
+          We'll be in touch soon.
         </p>
       </motion.div>
     );
@@ -56,6 +99,7 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
+          maxLength={100}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
           placeholder="Your name"
         />
@@ -72,8 +116,25 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={255}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
           placeholder="your@email.com"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phone" className="subheadline block mb-4">
+          Phone <span className="text-muted-foreground normal-case">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          maxLength={30}
+          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
+          placeholder="+1 555 000 0000"
         />
       </div>
 
@@ -87,11 +148,18 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
+          maxLength={2000}
           rows={5}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
           placeholder="Tell us about your project..."
         />
       </div>
+
+      {error && (
+        <p className="body-small text-destructive" role="alert">
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"
