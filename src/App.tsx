@@ -14,6 +14,7 @@ import Collaboration from "./pages/Collaboration";
 import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
+import ZambiaPricing from "./pages/zambia/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
           <Route path="/zambia/services" element={<ZambiaServices />} />
+          <Route path="/zambia/pricing" element={<ZambiaPricing />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
