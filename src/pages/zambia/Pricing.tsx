@@ -119,16 +119,11 @@ const ZambiaPricing = () => {
         <div className="container-editorial text-center">
           <h2 className="headline-card mb-4">Not sure what you need?</h2>
           <p className="body-large text-muted-foreground mb-10 max-w-xl mx-auto">
-            Book a free call and we'll recommend the right starting point in 15 minutes.
+            Get in touch and we'll recommend the right starting point.
           </p>
-          <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block"
-          >
-            Book a Free Call
-          </a>
+          <Link to="/zambia/contact" className="btn-primary inline-block">
+            Get in Touch
+          </Link>
         </div>
       </section>
     </Layout>
