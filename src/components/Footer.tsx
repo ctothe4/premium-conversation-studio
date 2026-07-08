@@ -18,14 +18,9 @@ const Footer = () => {
           <p className="body-large text-muted-foreground max-w-xl mx-auto mb-14">
             Let's talk about your project and see if we're a fit.
           </p>
-          <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block"
-          >
-            Book a Free Call
-          </a>
+          <Link to="/contact" className="btn-primary inline-block">
+            Get in Touch
+          </Link>
         </motion.div>
       </div>
 
