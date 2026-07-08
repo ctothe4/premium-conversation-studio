@@ -246,9 +246,7 @@ const Pricing = () => {
                   Strategic AI advisory focused on diagnosing how your business currently functions, identifying where intelligence can be automated or augmented, and designing custom human + AI systems.
                 </p>
                 <a
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:hello@socialcurrency.agency?subject=AI%20Systems%20Advisory%20Inquiry"
                   className="btn-outline inline-flex items-center gap-2"
                 >
                   Apply for Advisory
