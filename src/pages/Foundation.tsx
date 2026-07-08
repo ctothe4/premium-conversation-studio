@@ -142,14 +142,9 @@ const Foundation = () => {
       <AnimatedSection className="section-padding border-t border-border">
         <div className="container-editorial text-center">
           <h2 className="headline-card mb-8">Ready to establish a foundation?</h2>
-          <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block mb-6"
-          >
+          <Link to="/contact" className="btn-primary inline-block mb-6">
             Request a Digital Presence Review
-          </a>
+          </Link>
           <p className="body-small text-muted-foreground">
             Limited weekly availability.
           </p>
