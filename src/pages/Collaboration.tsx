@@ -169,9 +169,7 @@ const Collaboration = () => {
             <h3 className="headline-card mb-4">We align strategy with execution.</h3>
             <h3 className="headline-card mb-16">We build long-term trust capital.</h3>
             <a
-              href="https://calendly.com/socialcurrency/strategy"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:hello@socialcurrency.agency?subject=Strategic%20Conversation%20Inquiry"
               className="btn-outline inline-block"
             >
               Start a Strategic Conversation
