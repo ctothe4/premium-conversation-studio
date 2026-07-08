@@ -46,7 +46,7 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
 
       if (data.success) {
         setIsSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({ name: "", email: "", message: "" });
       } else {
         setError("Something went wrong. Please try again.");
       }
