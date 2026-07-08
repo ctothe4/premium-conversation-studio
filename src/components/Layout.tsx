@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import ChatWidget from "./ChatWidget";
 import GradientBackground from "./GradientBackground";
 import FloatingElements from "./FloatingElements";
+import BrandBadge from "./BrandBadge";
 
 interface LayoutProps {
   children: ReactNode;
