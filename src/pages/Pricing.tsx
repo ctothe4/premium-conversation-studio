@@ -113,9 +113,7 @@ const Pricing = () => {
                     Turns your website into an operational revenue assistant that captures, qualifies, and follows up.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Revenue%20Engine%20Inquiry"
                     className="btn-primary inline-flex items-center gap-3"
                   >
                     Build a Revenue Engine
