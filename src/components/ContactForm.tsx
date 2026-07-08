@@ -11,7 +11,6 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
