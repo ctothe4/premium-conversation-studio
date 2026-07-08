@@ -143,14 +143,12 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={isZambia ? "/zambia/contact" : "/contact"}
                     className="btn-primary inline-block mt-4"
                   >
-                    Book a Free Call
-                  </a>
+                    Get in Touch
+                  </Link>
                 </motion.div>
               </div>
             </div>
