@@ -30,7 +30,9 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
         to: "hello@socialcurrency.agency",
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        message: formData.message,
+      };
+      // (phone field removed)
         message: formData.message,
       };
 
