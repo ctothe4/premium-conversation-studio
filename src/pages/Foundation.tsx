@@ -25,22 +25,12 @@ const Foundation = () => {
               If your business doesn't have a website, we help you put a simple, credible digital foundation in place so everything else works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
+              <Link to="/contact" className="btn-primary">
                 Request a Digital Presence Review
-              </a>
-              <a
-                href="https://calendly.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                Book a Free Call
-              </a>
+              </Link>
+              <Link to="/contact" className="btn-outline">
+                Get in Touch
+              </Link>
             </div>
           </motion.div>
         </div>
