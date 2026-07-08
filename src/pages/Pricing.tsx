@@ -59,9 +59,7 @@ const Pricing = () => {
                     For businesses with a solid website foundation that want it to produce real inquiries.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Growth%20System%20Inquiry"
                     className="btn-primary inline-flex items-center gap-3"
                   >
                     Add a Growth Layer
@@ -115,9 +113,7 @@ const Pricing = () => {
                     Turns your website into an operational revenue assistant that captures, qualifies, and follows up.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Revenue%20Engine%20Inquiry"
                     className="btn-primary inline-flex items-center gap-3"
                   >
                     Build a Revenue Engine
@@ -172,9 +168,7 @@ const Pricing = () => {
                     For early-stage businesses that need a quick, functional presence.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Digital%20Fix%20Inquiry"
                     className="btn-outline inline-flex items-center gap-2 text-sm"
                   >
                     Quick Fix
@@ -252,9 +246,7 @@ const Pricing = () => {
                   Strategic AI advisory focused on diagnosing how your business currently functions, identifying where intelligence can be automated or augmented, and designing custom human + AI systems.
                 </p>
                 <a
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:hello@socialcurrency.agency?subject=AI%20Systems%20Advisory%20Inquiry"
                   className="btn-outline inline-flex items-center gap-2"
                 >
                   Apply for Advisory
@@ -274,16 +266,11 @@ const Pricing = () => {
         <div className="container-editorial text-center">
           <h2 className="headline-card mb-4">Not sure what you need?</h2>
           <p className="body-large text-muted-foreground mb-10 max-w-xl mx-auto">
-            Book a free call and we'll recommend the right starting point in 15 minutes.
+            Get in touch and we'll recommend the right starting point.
           </p>
-          <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block"
-          >
-            Book a Free Call
-          </a>
+          <Link to="/contact" className="btn-primary inline-block">
+            Get in Touch
+          </Link>
         </div>
       </section>
     </Layout>

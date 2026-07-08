@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Check } from "lucide-react";
@@ -24,22 +25,12 @@ const Foundation = () => {
               If your business doesn't have a website, we help you put a simple, credible digital foundation in place so everything else works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
+              <Link to="/contact" className="btn-primary">
                 Request a Digital Presence Review
-              </a>
-              <a
-                href="https://calendly.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                Book a Free Call
-              </a>
+              </Link>
+              <Link to="/contact" className="btn-outline">
+                Get in Touch
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -151,14 +142,9 @@ const Foundation = () => {
       <AnimatedSection className="section-padding border-t border-border">
         <div className="container-editorial text-center">
           <h2 className="headline-card mb-8">Ready to establish a foundation?</h2>
-          <a
-            href="https://calendly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-block mb-6"
-          >
+          <Link to="/contact" className="btn-primary inline-block mb-6">
             Request a Digital Presence Review
-          </a>
+          </Link>
           <p className="body-small text-muted-foreground">
             Limited weekly availability.
           </p>

@@ -15,7 +15,7 @@ const Contact = () => {
               className="lg:col-span-5"
             >
               <span className="subheadline block mb-8">Contact</span>
-              <h1 className="headline-hero mb-10">Let's talk.</h1>
+              <h1 className="headline-hero mb-10">Get in Touch.</h1>
               <div className="divider-refined mb-10" />
               <p className="body-large text-muted-foreground max-w-md">
                 Tell us about your project. We'll get back to you within one business day.
