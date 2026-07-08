@@ -120,21 +120,6 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
         />
       </div>
 
-      <div>
-        <label htmlFor="phone" className="subheadline block mb-4">
-          Phone <span className="text-muted-foreground normal-case">(optional)</span>
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          maxLength={30}
-          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
-          placeholder="+1 555 000 0000"
-        />
-      </div>
 
       <div>
         <label htmlFor="message" className="subheadline block mb-4">
