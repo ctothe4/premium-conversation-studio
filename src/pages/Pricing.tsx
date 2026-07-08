@@ -168,9 +168,7 @@ const Pricing = () => {
                     For early-stage businesses that need a quick, functional presence.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Digital%20Fix%20Inquiry"
                     className="btn-outline inline-flex items-center gap-2 text-sm"
                   >
                     Quick Fix
