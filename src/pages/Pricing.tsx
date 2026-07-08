@@ -59,9 +59,7 @@ const Pricing = () => {
                     For businesses with a solid website foundation that want it to produce real inquiries.
                   </p>
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:hello@socialcurrency.agency?subject=Growth%20System%20Inquiry"
                     className="btn-primary inline-flex items-center gap-3"
                   >
                     Add a Growth Layer
