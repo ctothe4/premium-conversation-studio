@@ -8,6 +8,7 @@ type Package = {
   tagline: string;
   price: string;
   badge?: string;
+  description?: string[];
   cta: string;
 };
 
