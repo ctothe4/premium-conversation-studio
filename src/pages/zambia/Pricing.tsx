@@ -8,6 +8,7 @@ type Package = {
   tagline: string;
   price: string;
   badge?: string;
+  description?: string[];
   cta: string;
 };
 
@@ -23,6 +24,18 @@ const packages: Package[] = [
     tagline: "Find out what your website is really saying about you.",
     price: "K1,500",
     cta: "Request an Audit",
+  },
+  {
+    name: "Landing Page",
+    tagline: "One page. One purpose. Live fast.",
+    price: "K4,750",
+    badge: "Launch ready in days",
+    description: [
+      "One page. Built for one job. Get you found, get you contacted, get you paid.",
+      "Mobile-first design, your contact info or booking link front and center, live in days not weeks.",
+      "Free 1-year hosting included.",
+    ],
+    cta: "Build my Landing Page",
   },
   {
     name: "Signature Site",
@@ -96,6 +109,15 @@ const ZambiaPricing = () => {
                 </p>
 
                 <div className="border-t border-border pt-6 mb-8">
+                  {pkg.description && (
+                    <div className="space-y-2 mb-6">
+                      {pkg.description.map((line) => (
+                        <p key={line} className="body-small text-muted-foreground">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  )}
                   <span className="font-display text-4xl lg:text-5xl">{pkg.price}</span>
                   <span className="text-muted-foreground ml-2 text-sm">ZMW</span>
                 </div>
