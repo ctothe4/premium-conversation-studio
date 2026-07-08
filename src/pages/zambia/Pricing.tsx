@@ -102,9 +102,7 @@ const ZambiaPricing = () => {
 
                 <div className="mt-auto">
                   <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`mailto:hello@socialcurrency.agency?subject=${encodeURIComponent(pkg.name + " Inquiry")}`}
                     className="btn-outline inline-flex items-center gap-2"
                   >
                     {pkg.cta}
