@@ -26,6 +26,18 @@ const packages: Package[] = [
     cta: "Request an Audit",
   },
   {
+    name: "Landing Page",
+    tagline: "One page. One purpose. Live fast.",
+    price: "K4,750",
+    badge: "Launch ready in days",
+    description: [
+      "One page. Built for one job. Get you found, get you contacted, get you paid.",
+      "Mobile-first design, your contact info or booking link front and center, live in days not weeks.",
+      "Free 1-year hosting included.",
+    ],
+    cta: "Build my Landing Page",
+  },
+  {
     name: "Signature Site",
     tagline: "Your name. Your story. Your corner of the internet.",
     price: "K7,500",
