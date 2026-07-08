@@ -19,6 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="flex-1 pt-20 md:pt-24">{children}</main>
       <Footer />
       <ChatWidget />
+      <BrandBadge />
     </div>
   );
 };
