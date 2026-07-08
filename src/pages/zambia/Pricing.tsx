@@ -109,6 +109,15 @@ const ZambiaPricing = () => {
                 </p>
 
                 <div className="border-t border-border pt-6 mb-8">
+                  {pkg.description && (
+                    <div className="space-y-2 mb-6">
+                      {pkg.description.map((line) => (
+                        <p key={line} className="body-small text-muted-foreground">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  )}
                   <span className="font-display text-4xl lg:text-5xl">{pkg.price}</span>
                   <span className="text-muted-foreground ml-2 text-sm">ZMW</span>
                 </div>
