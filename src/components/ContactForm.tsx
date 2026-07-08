@@ -32,9 +32,6 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
         email: formData.email,
         message: formData.message,
       };
-      // (phone field removed)
-        message: formData.message,
-      };
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
