@@ -118,8 +118,13 @@ const ZambiaPricing = () => {
                       ))}
                     </div>
                   )}
-                  <span className="font-display text-4xl lg:text-5xl">{pkg.price}</span>
-                  <span className="text-muted-foreground ml-2 text-sm">ZMW</span>
+                  <a
+                    href={`mailto:hello@socialcurrency.agency?subject=${encodeURIComponent(pkg.name + " Inquiry")}`}
+                    className="inline-flex items-center gap-2 font-display text-xl lg:text-2xl text-primary link-underline"
+                  >
+                    Enquire About This Package
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
 
                 <div className="mt-auto">
