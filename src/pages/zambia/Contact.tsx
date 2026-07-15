@@ -28,7 +28,7 @@ const ZambiaContact = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="lg:col-span-7"
             >
-              <ContactForm subject="New inquiry from socialcurrency.agency (Zambia)" />
+              <ContactForm />
             </motion.div>
           </div>
         </div>
