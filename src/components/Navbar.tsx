@@ -150,7 +150,7 @@ const Navbar = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <Link
-                    to={isZambia ? "/zambia/contact" : "/contact"}
+                    to={isZambiaRoute ? "/zambia/contact" : "/contact"}
                     className="btn-primary inline-block mt-4"
                   >
                     Get in Touch
