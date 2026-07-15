@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useIsZambia as useGeoIsZambia } from "@/hooks/useGeo";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
@@ -10,6 +11,7 @@ const baseNavItems = [
   { name: "Services", path: "/services", external: false },
   { name: "Pricing", path: "/pricing", external: false },
   { name: "Collaboration", path: "/collaboration", external: false },
+  { name: "Contact", path: "/contact", external: false },
 ];
 
 const Navbar = () => {
@@ -18,11 +20,15 @@ const Navbar = () => {
   const location = useLocation();
 
   // Detect Zambia context and prefix internal paths so the same nav works for both sites.
-  const isZambia = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const basePath = isZambia ? "/zambia" : "";
-  const navItems = baseNavItems.map((item) =>
-    item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
-  );
+  const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
+  const isZambiaGeo = useGeoIsZambia();
+  const hidePricing = isZambiaRoute || isZambiaGeo;
+  const basePath = isZambiaRoute ? "/zambia" : "";
+  const navItems = baseNavItems
+    .filter((item) => !(hidePricing && item.path === "/pricing"))
+    .map((item) =>
+      item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
+    );
   const homePath = basePath || "/";
 
   useEffect(() => {
@@ -144,7 +150,7 @@ const Navbar = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <Link
-                    to={isZambia ? "/zambia/contact" : "/contact"}
+                    to={isZambiaRoute ? "/zambia/contact" : "/contact"}
                     className="btn-primary inline-block mt-4"
                   >
                     Get in Touch

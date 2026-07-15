@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
 
-const WEB3FORMS_ACCESS_KEY = "000272ff-ef79-4917-ad5f-4fa9428eeba2";
-
-type Props = {
-  subject?: string;
-};
-
-const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Props) => {
+const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,48 +18,30 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
     setIsSubmitting(true);
     setError(null);
 
-    try {
-      const payload = {
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject,
-        from_name: "Social Currency Website",
-        to: "hello@socialcurrency.agency",
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      };
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+    const { error: insertError } = await supabase
+      .from("contact_submissions")
+      .insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim() || null,
+        message: formData.message.trim(),
       });
 
-      const data = await response.json();
+    setIsSubmitting(false);
 
-      if (data.success) {
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
-    } catch {
+    if (insertError) {
       setError("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+      return;
     }
+
+    setIsSubmitted(true);
+    setFormData({ name: "", email: "", company: "", message: "" });
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   if (isSubmitted) {
@@ -78,7 +56,7 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
           Consider this the beginning.
         </h3>
         <p className="body-large text-muted-foreground">
-          We'll be in touch soon.
+          We respond within 2 business days.
         </p>
       </motion.div>
     );
@@ -87,70 +65,60 @@ const ContactForm = ({ subject = "New inquiry from socialcurrency.agency" }: Pro
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
       <div>
-        <label htmlFor="name" className="subheadline block mb-4">
-          Name
-        </label>
+        <label htmlFor="name" className="subheadline block mb-4">Name</label>
         <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          maxLength={100}
+          type="text" id="name" name="name" value={formData.name}
+          onChange={handleChange} required maxLength={200}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="subheadline block mb-4">
-          Email
-        </label>
+        <label htmlFor="email" className="subheadline block mb-4">Email</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          maxLength={255}
+          type="email" id="email" name="email" value={formData.email}
+          onChange={handleChange} required maxLength={320}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
           placeholder="your@email.com"
         />
       </div>
 
+      <div>
+        <label htmlFor="company" className="subheadline block mb-4">Company</label>
+        <input
+          type="text" id="company" name="company" value={formData.company}
+          onChange={handleChange} maxLength={200}
+          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
+          placeholder="Your company (optional)"
+        />
+      </div>
 
       <div>
-        <label htmlFor="message" className="subheadline block mb-4">
-          Message
-        </label>
+        <label htmlFor="message" className="subheadline block mb-4">Message</label>
         <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          maxLength={2000}
-          rows={5}
+          id="message" name="message" value={formData.message}
+          onChange={handleChange} required maxLength={5000} rows={5}
           className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
-          placeholder="Tell us about your project..."
+          placeholder="Tell us what you're building..."
         />
       </div>
 
       {error && (
-        <p className="body-small text-destructive" role="alert">
-          {error}
-        </p>
+        <p className="body-small text-destructive" role="alert">{error}</p>
       )}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? "Sending..." : "Send Message"}
-      </button>
+      <div className="flex flex-col gap-6">
+        <button
+          type="submit" disabled={isSubmitting}
+          className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed self-start"
+        >
+          {isSubmitting ? "Sending..." : "Send"}
+        </button>
+        <p className="body-small text-muted-foreground">
+          We respond within 2 business days.
+        </p>
+      </div>
     </form>
   );
 };

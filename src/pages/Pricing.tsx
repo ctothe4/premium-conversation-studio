@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Check, ArrowRight } from "lucide-react";
+import { useIsZambia } from "@/hooks/useGeo";
 
 const Pricing = () => {
+  const isZambia = useIsZambia();
+  if (isZambia) return <Navigate to="/contact" replace />;
   return (
     <Layout>
       {/* Orientation Section */}
