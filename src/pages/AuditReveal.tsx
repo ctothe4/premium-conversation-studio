@@ -177,8 +177,14 @@ const AuditReveal = () => {
               {/* Growth */}
               <div className="text-center p-6 border-2 border-primary bg-primary/5">
                 <h3 className="font-display text-xl mb-2">Growth System</h3>
-                <p className="font-display text-3xl mb-4">$699</p>
-                <p className="body-small text-muted-foreground">one-time</p>
+                {isZambia ? (
+                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
+                ) : (
+                  <>
+                    <p className="font-display text-3xl mb-4">$699</p>
+                    <p className="body-small text-muted-foreground">one-time</p>
+                  </>
+                )}
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses with a foundation.
