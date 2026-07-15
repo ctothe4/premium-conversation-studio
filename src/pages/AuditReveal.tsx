@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import { useIsZambia } from "@/hooks/useGeo";
 
 const AuditReveal = () => {
+  const isZambia = useIsZambia();
   // Set noindex for internal page
   useEffect(() => {
     const metaRobots = document.createElement("meta");
