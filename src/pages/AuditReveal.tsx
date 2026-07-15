@@ -154,8 +154,14 @@ const AuditReveal = () => {
               {/* Foundation */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Digital Foundation</h3>
-                <p className="font-display text-3xl mb-4">$1,250</p>
-                <p className="body-small text-muted-foreground">one-time</p>
+                {isZambia ? (
+                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
+                ) : (
+                  <>
+                    <p className="font-display text-3xl mb-4">$1,250</p>
+                    <p className="body-small text-muted-foreground">one-time</p>
+                  </>
+                )}
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses without a website.
