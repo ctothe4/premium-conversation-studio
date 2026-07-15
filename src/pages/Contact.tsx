@@ -15,10 +15,10 @@ const Contact = () => {
               className="lg:col-span-5"
             >
               <span className="subheadline block mb-8">Contact</span>
-              <h1 className="headline-hero mb-10">Get in Touch.</h1>
+              <h1 className="headline-hero mb-10">Let's Talk.</h1>
               <div className="divider-refined mb-10" />
               <p className="body-large text-muted-foreground max-w-md">
-                Tell us about your project. We'll get back to you within one business day.
+                Tell us what you're building. We'll tell you if we're the right fit to help.
               </p>
             </motion.div>
 
@@ -28,7 +28,7 @@ const Contact = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="lg:col-span-7"
             >
-              <ContactForm subject="New inquiry from socialcurrency.agency" />
+              <ContactForm />
             </motion.div>
           </div>
         </div>
