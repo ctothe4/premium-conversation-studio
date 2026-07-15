@@ -197,8 +197,14 @@ const AuditReveal = () => {
               {/* Revenue */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Revenue Engine</h3>
-                <p className="font-display text-3xl mb-4">$999–$1,499</p>
-                <p className="body-small text-muted-foreground">one-time</p>
+                {isZambia ? (
+                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
+                ) : (
+                  <>
+                    <p className="font-display text-3xl mb-4">$999–$1,499</p>
+                    <p className="body-small text-muted-foreground">one-time</p>
+                  </>
+                )}
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses ready to scale.
