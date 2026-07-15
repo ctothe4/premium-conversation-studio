@@ -20,11 +20,15 @@ const Navbar = () => {
   const location = useLocation();
 
   // Detect Zambia context and prefix internal paths so the same nav works for both sites.
-  const isZambia = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const basePath = isZambia ? "/zambia" : "";
-  const navItems = baseNavItems.map((item) =>
-    item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
-  );
+  const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
+  const isZambiaGeo = useGeoIsZambia();
+  const hidePricing = isZambiaRoute || isZambiaGeo;
+  const basePath = isZambiaRoute ? "/zambia" : "";
+  const navItems = baseNavItems
+    .filter((item) => !(hidePricing && item.path === "/pricing"))
+    .map((item) =>
+      item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
+    );
   const homePath = basePath || "/";
 
   useEffect(() => {
