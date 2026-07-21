@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import { useShowPricing } from "@/hooks/useGeo";
 
 const AuditReveal = () => {
-  const isZambia = useIsZambia();
+  const showPricing = useShowPricing();
   // Set noindex for internal page
   useEffect(() => {
     const metaRobots = document.createElement("meta");
