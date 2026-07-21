@@ -21,8 +21,9 @@ const Navbar = () => {
 
   // Detect Zambia context and prefix internal paths so the same nav works for both sites.
   const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const isZambiaGeo = useGeoIsZambia();
-  const hidePricing = isZambiaRoute || isZambiaGeo;
+  const { country, resolved } = useGeo();
+  // Fail-safe: hide Pricing until we know the visitor is NOT in Zambia.
+  const hidePricing = isZambiaRoute || !resolved || country === "ZM";
   const basePath = isZambiaRoute ? "/zambia" : "";
   const navItems = baseNavItems
     .filter((item) => !(hidePricing && item.path === "/pricing"))
