@@ -154,7 +154,7 @@ const AuditReveal = () => {
               {/* Foundation */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Digital Foundation</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>
@@ -177,7 +177,7 @@ const AuditReveal = () => {
               {/* Growth */}
               <div className="text-center p-6 border-2 border-primary bg-primary/5">
                 <h3 className="font-display text-xl mb-2">Growth System</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>
@@ -197,7 +197,7 @@ const AuditReveal = () => {
               {/* Revenue */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Revenue Engine</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>
