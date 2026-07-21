@@ -130,7 +130,7 @@ const Foundation = () => {
       <AnimatedSection className="section-padding-sm border-t border-border bg-muted/30">
         <div className="container-editorial text-center">
           <p className="subheadline mb-6">Investment</p>
-          {isZambia ? (
+          {!showPricing ? (
             <Link to="/contact" className="btn-outline inline-block mb-4">
               Enquire About This Package
             </Link>
