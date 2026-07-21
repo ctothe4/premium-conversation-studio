@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { useIsZambia as useGeoIsZambia } from "@/hooks/useGeo";
+import { useGeo } from "@/hooks/useGeo";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
