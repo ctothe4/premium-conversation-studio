@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { useIsZambia } from "@/hooks/useGeo";
+import { useShowPricing } from "@/hooks/useGeo";
 
 const AuditReveal = () => {
-  const isZambia = useIsZambia();
+  const showPricing = useShowPricing();
   // Set noindex for internal page
   useEffect(() => {
     const metaRobots = document.createElement("meta");
@@ -154,7 +154,7 @@ const AuditReveal = () => {
               {/* Foundation */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Digital Foundation</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>
@@ -177,7 +177,7 @@ const AuditReveal = () => {
               {/* Growth */}
               <div className="text-center p-6 border-2 border-primary bg-primary/5">
                 <h3 className="font-display text-xl mb-2">Growth System</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>
@@ -197,7 +197,7 @@ const AuditReveal = () => {
               {/* Revenue */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Revenue Engine</h3>
-                {isZambia ? (
+                {!showPricing ? (
                   <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 ) : (
                   <>

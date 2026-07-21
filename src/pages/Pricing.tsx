@@ -2,11 +2,14 @@ import { motion } from "framer-motion";
 import { Link, Navigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Check, ArrowRight } from "lucide-react";
-import { useIsZambia } from "@/hooks/useGeo";
+import { useGeo } from "@/hooks/useGeo";
 
 const Pricing = () => {
-  const isZambia = useIsZambia();
-  if (isZambia) return <Navigate to="/contact" replace />;
+  const { country, resolved } = useGeo();
+  // Fail-safe: while geo is unresolved, render nothing so ZM visitors
+  // never flash the pricing content before the redirect fires.
+  if (!resolved) return <Layout><div className="section-padding" /></Layout>;
+  if (country === "ZM") return <Navigate to="/contact" replace />;
   return (
     <Layout>
       {/* Orientation Section */}

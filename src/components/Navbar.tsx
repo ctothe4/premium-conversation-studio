@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { useIsZambia as useGeoIsZambia } from "@/hooks/useGeo";
+import { useGeo } from "@/hooks/useGeo";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
@@ -21,8 +21,9 @@ const Navbar = () => {
 
   // Detect Zambia context and prefix internal paths so the same nav works for both sites.
   const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const isZambiaGeo = useGeoIsZambia();
-  const hidePricing = isZambiaRoute || isZambiaGeo;
+  const { country, resolved } = useGeo();
+  // Fail-safe: hide Pricing until we know the visitor is NOT in Zambia.
+  const hidePricing = isZambiaRoute || !resolved || country === "ZM";
   const basePath = isZambiaRoute ? "/zambia" : "";
   const navItems = baseNavItems
     .filter((item) => !(hidePricing && item.path === "/pricing"))
