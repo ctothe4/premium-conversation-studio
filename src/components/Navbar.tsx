@@ -87,6 +87,7 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.path}
+                    onClick={() => trackNavClick(item.name, item.path, "desktop")}
                     className={`nav-link link-underline ${
                       location.pathname === item.path ? "text-primary" : ""
                     }`}
