@@ -33,7 +33,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/process" element={<Process />} />
-          <Route path="/services" element={<Services />} />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
           <Route path="/collaboration" element={<Collaboration />} />
@@ -41,7 +41,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
-          <Route path="/zambia/services" element={<ZambiaServices />} />} />
+          <Route path="/zambia/services" element={<ZambiaServices />} />
           <Route path="/zambia/collaboration" element={<ZambiaCollaboration />} />
           <Route path="/zambia/contact" element={<ZambiaContact />} />
           <Route path="*" element={<NotFound />} />
