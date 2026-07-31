@@ -126,20 +126,13 @@ const Foundation = () => {
         </div>
       </AnimatedSection>
 
-      {/* Pricing */}
+      {/* Positioning */}
       <AnimatedSection className="section-padding-sm border-t border-border bg-muted/30">
         <div className="container-editorial text-center">
-          <p className="subheadline mb-6">Investment</p>
-          {!showPricing ? (
-            <Link to="/contact" className="btn-outline inline-block mb-4">
-              Enquire About This Package
-            </Link>
-          ) : (
-            <div className="mb-8">
-              <span className="font-display text-5xl lg:text-6xl">$1,250</span>
-              <span className="text-muted-foreground ml-2">one-time</span>
-            </div>
-          )}
+          <p className="subheadline mb-6">The Offer</p>
+          <Link to="/contact" className="btn-outline inline-block mb-8">
+            Enquire About This Package
+          </Link>
           <p className="body-regular text-muted-foreground max-w-xl mx-auto">
             A complete digital foundation built right the first time.
           </p>
