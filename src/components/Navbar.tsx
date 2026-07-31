@@ -28,6 +28,8 @@ const Navbar = () => {
   const basePath = isZambiaRoute ? "/zambia" : "";
   const navItems = baseNavItems
     .filter((item) => !(hidePricing && item.path === "/pricing"))
+    // AI Fluency lives on the main site only.
+    .filter((item) => !(isZambiaRoute && item.path === "/ai-fluency"))
     .map((item) =>
       item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
     );
