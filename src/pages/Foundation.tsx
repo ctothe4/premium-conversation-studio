@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Check } from "lucide-react";
-import { useShowPricing } from "@/hooks/useGeo";
 
 const Foundation = () => {
-  const showPricing = useShowPricing();
   return (
     <Layout>
       {/* Hero Section */}

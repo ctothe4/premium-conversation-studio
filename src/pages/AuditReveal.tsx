@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { useShowPricing } from "@/hooks/useGeo";
 
 const AuditReveal = () => {
-  const showPricing = useShowPricing();
   // Set noindex for internal page
   useEffect(() => {
     const metaRobots = document.createElement("meta");
