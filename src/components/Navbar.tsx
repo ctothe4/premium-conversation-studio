@@ -141,6 +141,7 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to={item.path}
+                        onClick={() => trackNavClick(item.name, item.path, "mobile")}
                         className={`headline-card ${
                           location.pathname === item.path ? "text-primary" : ""
                         }`}
