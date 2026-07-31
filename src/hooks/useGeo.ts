@@ -55,20 +55,9 @@ export function useGeoCountry(): string | null {
 
 /**
  * True only when detection has resolved AND country is Zambia.
- * Callers that need to hide pricing should also check `resolved` and
- * treat "unresolved" as "hide" for fail-safe behavior.
  */
 export function useIsZambia(): boolean {
   const { country } = useGeo();
   return country === "ZM";
 }
 
-/**
- * Fail-safe helper: returns true when it's safe to show pricing.
- * False while detection is pending, false for Zambia, true otherwise.
- */
-export function useShowPricing(): boolean {
-  const { country, resolved } = useGeo();
-  if (!resolved) return false;
-  return country !== "ZM";
-}

@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { useShowPricing } from "@/hooks/useGeo";
 
 const AuditReveal = () => {
-  const showPricing = useShowPricing();
   // Set noindex for internal page
   useEffect(() => {
     const metaRobots = document.createElement("meta");
@@ -154,14 +152,7 @@ const AuditReveal = () => {
               {/* Foundation */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Digital Foundation</h3>
-                {!showPricing ? (
-                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
-                ) : (
-                  <>
-                    <p className="font-display text-3xl mb-4">$1,250</p>
-                    <p className="body-small text-muted-foreground">one-time</p>
-                  </>
-                )}
+                <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses without a website.
@@ -177,14 +168,7 @@ const AuditReveal = () => {
               {/* Growth */}
               <div className="text-center p-6 border-2 border-primary bg-primary/5">
                 <h3 className="font-display text-xl mb-2">Growth System</h3>
-                {!showPricing ? (
-                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
-                ) : (
-                  <>
-                    <p className="font-display text-3xl mb-4">$699</p>
-                    <p className="body-small text-muted-foreground">one-time</p>
-                  </>
-                )}
+                <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses with a foundation.
@@ -197,14 +181,7 @@ const AuditReveal = () => {
               {/* Revenue */}
               <div className="text-center p-6 border border-border">
                 <h3 className="font-display text-xl mb-2">Revenue Engine</h3>
-                {!showPricing ? (
-                  <p className="font-display text-xl mb-4 text-primary">Enquire</p>
-                ) : (
-                  <>
-                    <p className="font-display text-3xl mb-4">$999–$1,499</p>
-                    <p className="body-small text-muted-foreground">one-time</p>
-                  </>
-                )}
+                <p className="font-display text-xl mb-4 text-primary">Enquire</p>
                 <div className="divider-refined my-6" />
                 <p className="body-small text-muted-foreground">
                   For businesses ready to scale.

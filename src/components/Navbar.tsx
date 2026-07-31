@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { useGeo } from "@/hooks/useGeo";
 import { trackNavClick } from "@/lib/analytics";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
   { name: "Process", path: "/process", external: false },
   { name: "Services", path: "/services", external: false },
-  { name: "Pricing", path: "/pricing", external: false },
   { name: "AI Fluency", path: "/ai-fluency", external: false },
   { name: "Collaboration", path: "/collaboration", external: false },
   { name: "Contact", path: "/contact", external: false },
@@ -23,12 +21,8 @@ const Navbar = () => {
 
   // Detect Zambia context and prefix internal paths so the same nav works for both sites.
   const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const { country, resolved } = useGeo();
-  // Fail-safe: hide Pricing until we know the visitor is NOT in Zambia.
-  const hidePricing = isZambiaRoute || !resolved || country === "ZM";
   const basePath = isZambiaRoute ? "/zambia" : "";
   const navItems = baseNavItems
-    .filter((item) => !(hidePricing && item.path === "/pricing"))
     // AI Fluency lives on the main site only.
     .filter((item) => !(isZambiaRoute && item.path === "/ai-fluency"))
     .map((item) =>
