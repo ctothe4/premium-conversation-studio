@@ -10,6 +10,7 @@ const baseNavItems = [
   { name: "Process", path: "/process", external: false },
   { name: "Services", path: "/services", external: false },
   { name: "Pricing", path: "/pricing", external: false },
+  { name: "AI Fluency", path: "/ai-fluency", external: false },
   { name: "Collaboration", path: "/collaboration", external: false },
   { name: "Contact", path: "/contact", external: false },
 ];

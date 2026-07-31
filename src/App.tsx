@@ -12,6 +12,7 @@ import Foundation from "./pages/Foundation";
 import AuditReveal from "./pages/AuditReveal";
 import Collaboration from "./pages/Collaboration";
 import Contact from "./pages/Contact";
+import AIFluency from "./pages/AIFluency";
 import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
           <Route path="/collaboration" element={<Collaboration />} />
+          <Route path="/ai-fluency" element={<AIFluency />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
