@@ -8,7 +8,6 @@ import AnalyticsTracker from "./components/AnalyticsTracker";
 import Index from "./pages/Index";
 import Process from "./pages/Process";
 import Services from "./pages/Services";
-import Pricing from "./pages/Pricing";
 import Foundation from "./pages/Foundation";
 import AuditReveal from "./pages/AuditReveal";
 import Collaboration from "./pages/Collaboration";
@@ -17,7 +16,6 @@ import AIFluency from "./pages/AIFluency";
 import ZambiaIndex from "./pages/zambia/Index";
 import ZambiaProcess from "./pages/zambia/Process";
 import ZambiaServices from "./pages/zambia/Services";
-import ZambiaPricing from "./pages/zambia/Pricing";
 import ZambiaCollaboration from "./pages/zambia/Collaboration";
 import ZambiaContact from "./pages/zambia/Contact";
 import NotFound from "./pages/NotFound";
@@ -35,8 +33,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/process" element={<Process />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/services" element={<Services />} />} />
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/audit-reveal" element={<AuditReveal />} />
           <Route path="/collaboration" element={<Collaboration />} />
@@ -44,8 +41,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/zambia" element={<ZambiaIndex />} />
           <Route path="/zambia/process" element={<ZambiaProcess />} />
-          <Route path="/zambia/services" element={<ZambiaServices />} />
-          <Route path="/zambia/pricing" element={<ZambiaPricing />} />
+          <Route path="/zambia/services" element={<ZambiaServices />} />} />
           <Route path="/zambia/collaboration" element={<ZambiaCollaboration />} />
           <Route path="/zambia/contact" element={<ZambiaContact />} />
           <Route path="*" element={<NotFound />} />
