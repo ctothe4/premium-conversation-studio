@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useGeo } from "@/hooks/useGeo";
+import { trackNavClick } from "@/lib/analytics";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
