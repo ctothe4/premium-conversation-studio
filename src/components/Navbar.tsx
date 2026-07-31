@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useGeo } from "@/hooks/useGeo";
+import { trackNavClick } from "@/lib/analytics";
 
 const baseNavItems = [
   { name: "Home", path: "/", external: false },
@@ -86,6 +87,7 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.path}
+                    onClick={() => trackNavClick(item.name, item.path, "desktop")}
                     className={`nav-link link-underline ${
                       location.pathname === item.path ? "text-primary" : ""
                     }`}
@@ -139,6 +141,7 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to={item.path}
+                        onClick={() => trackNavClick(item.name, item.path, "mobile")}
                         className={`headline-card ${
                           location.pathname === item.path ? "text-primary" : ""
                         }`}
