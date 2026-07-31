@@ -10,6 +10,7 @@ const baseNavItems = [
   { name: "Process", path: "/process", external: false },
   { name: "Services", path: "/services", external: false },
   { name: "Pricing", path: "/pricing", external: false },
+  { name: "AI Fluency", path: "/ai-fluency", external: false },
   { name: "Collaboration", path: "/collaboration", external: false },
   { name: "Contact", path: "/contact", external: false },
 ];
@@ -27,6 +28,8 @@ const Navbar = () => {
   const basePath = isZambiaRoute ? "/zambia" : "";
   const navItems = baseNavItems
     .filter((item) => !(hidePricing && item.path === "/pricing"))
+    // AI Fluency lives on the main site only.
+    .filter((item) => !(isZambiaRoute && item.path === "/ai-fluency"))
     .map((item) =>
       item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
     );
