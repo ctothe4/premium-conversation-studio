@@ -63,12 +63,3 @@ export function useIsZambia(): boolean {
   return country === "ZM";
 }
 
-/**
- * Fail-safe helper: returns true when it's safe to show pricing.
- * False while detection is pending, false for Zambia, true otherwise.
- */
-export function useShowPricing(): boolean {
-  const { country, resolved } = useGeo();
-  if (!resolved) return false;
-  return country !== "ZM";
-}
