@@ -55,8 +55,6 @@ export function useGeoCountry(): string | null {
 
 /**
  * True only when detection has resolved AND country is Zambia.
- * Callers that need to hide pricing should also check `resolved` and
- * treat "unresolved" as "hide" for fail-safe behavior.
  */
 export function useIsZambia(): boolean {
   const { country } = useGeo();
