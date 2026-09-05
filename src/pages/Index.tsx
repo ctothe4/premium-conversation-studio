@@ -1,279 +1,107 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Layout from "@/components/Layout";
-import AnimatedSection from "@/components/AnimatedSection";
-import BookCallButton from "@/components/BookCallButton";
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import Seo from "@/components/Seo";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
+import HeroCommerce from "@/components/sections/HeroCommerce";
+import ProblemSection from "@/components/sections/ProblemSection";
+import CommerceJourney from "@/components/sections/CommerceJourney";
+import SolutionsSection from "@/components/sections/SolutionsSection";
+import LiveDemo from "@/components/sections/LiveDemo";
+import IndustriesSection from "@/components/sections/IndustriesSection";
+import WebsitesSection from "@/components/sections/WebsitesSection";
+import PricingSection from "@/components/sections/PricingSection";
+import TrustSection from "@/components/sections/TrustSection";
+import Qualifier from "@/components/sections/Qualifier";
+import FinalCta from "@/components/sections/FinalCta";
+import { useLocale } from "@/context/LocaleContext";
 
 const Index = () => {
-  const navigate = useNavigate();
-
-  // Geolocation redirect: visitors detected in Zambia get the Zambia site.
-  useEffect(() => {
-    if (sessionStorage.getItem("geoRedirectChecked") === "1") return;
-    sessionStorage.setItem("geoRedirectChecked", "1");
-
-    const controller = new AbortController();
-    fetch("https://ipapi.co/json/", { signal: controller.signal })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (data && data.country_code === "ZM") {
-          navigate("/zambia", { replace: true });
-        }
-      })
-      .catch(() => {
-        // Silent fail: stay on the Canadian homepage.
-      });
-
-    return () => controller.abort();
-  }, [navigate]);
+  const { t } = useLocale();
+  const reduce = useReducedMotion();
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="min-h-[95vh] flex items-center">
-        <div className="container-editorial">
-          <div className="max-w-6xl">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="subheadline block mb-8"
-            >
-              Creative Agency
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-              className="headline-hero mb-10 md:mb-14"
-            >
-              We Build Systems That Produce <span className="text-primary">Successful Outcomes.</span>
-            </motion.h1>
+      <Seo title={t.meta.home.title} description={t.meta.home.description} path="/" />
+
+      <section className="flex min-h-[88vh] items-center py-16 md:py-24">
+        <div className="container-editorial w-full">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
+            <div>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="subheadline mb-8 block"
+              >
+                {t.hero.eyebrow}
+              </motion.span>
+
+              <motion.h1
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                className="headline-hero mb-10 text-[clamp(2.75rem,10vw,9rem)] leading-[0.9]"
+              >
+                {t.hero.headlineA}
+                <br />
+                <span className="text-primary">{t.hero.headlineB}</span>
+              </motion.h1>
+
+              <div className="divider-refined mb-10" />
+
+              <motion.p
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.35 }}
+                className="body-large mb-12 max-w-xl text-muted-foreground"
+              >
+                {t.hero.body}
+              </motion.p>
+
+              <motion.div
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-col gap-4 sm:flex-row sm:items-center"
+              >
+                <WhatsAppCTA
+                  label={t.hero.primary}
+                  message={t.common.whatsappMessage}
+                  location="hero"
+                  product="whatsapp-store"
+                />
+                <a
+                  href="#how-it-works"
+                  className="nav-link link-underline inline-flex min-h-[3rem] items-center gap-2"
+                >
+                  {t.hero.secondary} ↓
+                </a>
+              </motion.div>
+            </div>
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="divider-refined mb-10"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="body-large text-muted-foreground max-w-2xl mb-14"
             >
-              We help businesses and brands grow by building better digital tools and creating stories that actually produce real results. We design the tools and systems that turn <em className="italic">attention</em> into a <strong className="font-semibold text-foreground">business asset</strong>.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-            >
-              <BookCallButton />
+              <HeroCommerce />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Abstract System SVG Section */}
-      <AnimatedSection className="py-24 md:py-40 border-t border-border">
-        <div className="container-editorial">
-          <div className="flex justify-center">
-            <svg
-              viewBox="0 0 500 120"
-              className="w-full max-w-3xl h-auto text-foreground"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.5"
-            >
-              {/* Refined geometric system representation */}
-              <motion.circle
-                cx="100"
-                cy="60"
-                r="45"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 0.2, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx="250"
-                cy="60"
-                r="45"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx="400"
-                cy="60"
-                r="45"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
-              />
-              <motion.line
-                x1="145"
-                y1="60"
-                x2="205"
-                y2="60"
-                strokeWidth="0.5"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.5 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 1.5 }}
-              />
-              <motion.line
-                x1="295"
-                y1="60"
-                x2="355"
-                y2="60"
-                strokeWidth="0.5"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.5 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 1.8 }}
-              />
-              {/* Refined center dots */}
-              <motion.circle
-                cx="100"
-                cy="60"
-                r="4"
-                fill="hsl(var(--primary))"
-                stroke="none"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 2.2 }}
-              />
-              <motion.circle
-                cx="250"
-                cy="60"
-                r="4"
-                fill="hsl(var(--primary))"
-                stroke="none"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 2.4 }}
-              />
-              <motion.circle
-                cx="400"
-                cy="60"
-                r="4"
-                fill="hsl(var(--primary))"
-                stroke="none"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 2.6 }}
-              />
-            </svg>
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* Process Preview */}
-      <AnimatedSection className="section-padding border-t border-border">
-        <div className="container-editorial">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20 md:mb-28">
-            <div>
-              <span className="subheadline block mb-6">Our Process</span>
-              <h2 className="headline-section max-w-3xl">
-                A clear path from idea to impact.
-              </h2>
-            </div>
-            <Link
-              to="/process"
-              className="nav-link link-underline flex items-center gap-3 group"
-            >
-              View our process <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
-            {[
-              {
-                num: "01",
-                title: "Audit",
-                desc: "We identify the bottlenecks in your digital and physical presence and create strategies to remove them.",
-              },
-              {
-                num: "02",
-                title: "Build",
-                desc: "We engineer custom tools, systems and content to capture market interest.",
-              },
-              {
-                num: "03",
-                title: "Scale",
-                desc: "We launch the campaigns that make your brand the conversation.",
-              },
-            ].map((step, index) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative group"
-              >
-                <span className="subheadline text-primary block mb-6">
-                  {step.num}
-                </span>
-                <div className="divider-refined mb-8 group-hover:w-24 transition-all duration-500" />
-                <h3 className="headline-card mb-5">{step.title}</h3>
-                <p className="body-regular text-muted-foreground">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-
-      {/* Services Preview */}
-      <AnimatedSection className="section-padding border-t border-border bg-secondary/20">
-        <div className="container-editorial">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20 md:mb-28">
-            <div>
-              <span className="subheadline block mb-6">Capabilities</span>
-              <h2 className="headline-section max-w-2xl">
-                What we do.
-              </h2>
-            </div>
-            <Link
-              to="/services"
-              className="nav-link link-underline flex items-center gap-3 group"
-            >
-              View all services <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/50">
-            {[
-              "Brand Positioning",
-              "Funnel Design",
-              "Systems & Automations",
-              "Brand Identity",
-              "Video Content",
-              "Content Strategy",
-            ].map((service, index) => (
-              <motion.div
-                key={service}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="bg-background p-10 md:p-14 lg:p-16 group cursor-default"
-              >
-                <span className="subheadline text-primary block mb-4">0{index + 1}</span>
-                <h3 className="headline-card group-hover:text-primary transition-colors duration-500">{service}</h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
+      <ProblemSection />
+      <div id="how-it-works">
+        <CommerceJourney />
+      </div>
+      <SolutionsSection />
+      <LiveDemo />
+      <IndustriesSection />
+      <WebsitesSection />
+      <PricingSection />
+      <TrustSection />
+      <Qualifier />
+      <FinalCta />
     </Layout>
   );
 };
