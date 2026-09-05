@@ -1,72 +1,92 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Globe } from "lucide-react";
+import { useLocale } from "@/context/LocaleContext";
+import { SITE } from "@/config/site";
+import LocalisationDrawer from "./LocalisationDrawer";
 
 const Footer = () => {
+  const { t, language, country, currency } = useLocale();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const links = [
+    { label: t.nav.solutions, to: "/solutions" },
+    { label: t.nav.industries, to: "/industries" },
+    { label: t.nav.pricing, to: "/pricing" },
+    { label: t.nav.howItWorks, to: "/how-it-works" },
+    { label: t.nav.contact, to: "/contact" },
+  ];
+
   return (
-    <footer className="bg-background border-t border-border">
-      {/* Final CTA Section */}
-      <div className="container-editorial section-padding text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <span className="subheadline block mb-8">Next Step</span>
-          <h2 className="headline-section mb-8">Ready to grow?</h2>
-          <div className="divider-refined mx-auto mb-10" />
-          <p className="body-large text-muted-foreground max-w-xl mx-auto mb-14">
-            Let's talk about your project and see if we're a fit.
-          </p>
-          <Link to="/contact" className="btn-primary inline-block">
-            Get in Touch
-          </Link>
-        </motion.div>
-      </div>
+    <footer className="border-t border-border bg-background">
+      <div className="container-editorial py-20 md:py-28">
+        <div className="grid gap-14 md:grid-cols-[1.5fr_1fr_1fr]">
+          <div>
+            <h2 className="headline-card mb-4">Social Currency</h2>
+            <p className="body-regular max-w-sm text-muted-foreground">{t.footer.tagline}</p>
+          </div>
 
-      {/* Main Footer */}
-      <div className="border-t border-border">
-        <div className="container-editorial py-20 md:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-16"
-          >
-            {/* Tagline */}
-            <div>
-              <h3 className="headline-section mb-6">
-                Be the Conversation.
-              </h3>
-              <p className="body-small text-muted-foreground">
-                © {new Date().getFullYear()} Social Currency. All rights reserved.
-              </p>
-            </div>
+          <nav aria-label={t.footer.linksTitle}>
+            <h3 className="subheadline mb-6 text-foreground">{t.footer.linksTitle}</h3>
+            <ul className="flex flex-col gap-4">
+              {links.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="nav-link link-underline">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/about" className="nav-link link-underline">
+                  {language === "fr" ? "À propos" : "About"}
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-            {/* Links */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-14">
-              <Link
-                to="/contact"
-                className="nav-link link-underline"
-              >
-                hello@socialcurrency.agency
-              </Link>
-              <a
-                href="https://instagram.com/socuagency"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link link-underline"
-              >
-                Instagram
-              </a>
-              <Link to="/contact" className="nav-link link-underline">
-                Contact
-              </Link>
-            </div>
-          </motion.div>
+          <div>
+            <h3 className="subheadline mb-6 text-foreground">{t.footer.localeTitle}</h3>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="nav-link mb-6 flex min-h-[2.75rem] items-center gap-2 border border-border px-3 hover:border-primary"
+              aria-label={t.localisation.utilityLabel}
+            >
+              <Globe size={13} aria-hidden="true" />
+              {language.toUpperCase()} · {country} · {currency}
+            </button>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <a
+                  href={SITE.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link link-underline"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${SITE.email}`} className="nav-link link-underline">
+                  {SITE.email}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-4 border-t border-border pt-10 md:flex-row md:items-center md:justify-between">
+          <p className="headline-card text-primary">{t.footer.closing}</p>
+          <div className="flex flex-col gap-2 md:items-end">
+            <p className="body-small text-muted-foreground">
+              {t.footer.rights(new Date().getFullYear())}
+            </p>
+            <p className="body-small text-muted-foreground/70">{t.footer.parent}</p>
+          </div>
         </div>
       </div>
+
+      <LocalisationDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </footer>
   );
 };
