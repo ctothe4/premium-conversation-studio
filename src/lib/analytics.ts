@@ -45,15 +45,34 @@ export const trackPageView = (path: string, title?: string) => {
     page_title: title ?? (typeof document !== "undefined" ? document.title : undefined),
   });
 
-  if (path === "/ai-fluency") {
-    trackEvent("ai_fluency_page_view", { page_path: path });
-  }
+  if (path.endsWith("/pricing")) trackEvent("pricing_viewed", { page_path: path });
 };
 
 export const trackNavClick = (name: string, path: string, source: "desktop" | "mobile") => {
   trackEvent("nav_click", { link_name: name, link_path: path, menu: source });
-
-  if (path.endsWith("/ai-fluency")) {
-    trackEvent("ai_fluency_nav_click", { menu: source, link_path: path });
-  }
 };
+
+/** Commerce-specific events used across the V2 experience. */
+export const trackWhatsAppClick = (location: string, product?: string) =>
+  trackEvent("whatsapp_cta_clicked", { cta_location: location, product });
+
+export const trackSolutionViewed = (slug: string) =>
+  trackEvent("solution_viewed", { solution: slug });
+
+export const trackProductSelected = (slug: string) =>
+  trackEvent("product_selected", { solution: slug });
+
+export const trackDemoStarted = (journey: string) =>
+  trackEvent("demo_started", { journey });
+
+export const trackDemoCompleted = (journey: string) =>
+  trackEvent("demo_completed", { journey });
+
+export const trackLeadStarted = (source: string) =>
+  trackEvent("lead_started", { source });
+
+export const trackLeadQualified = (recommendation: string) =>
+  trackEvent("lead_qualified", { recommendation });
+
+export const trackCheckoutStarted = (product: string) =>
+  trackEvent("checkout_started", { product });
