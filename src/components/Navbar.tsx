@@ -1,40 +1,31 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { trackNavClick } from "@/lib/analytics";
-
-const baseNavItems = [
-  { name: "Home", path: "/", external: false },
-  { name: "Process", path: "/process", external: false },
-  { name: "Services", path: "/services", external: false },
-  { name: "AI Fluency", path: "/ai-fluency", external: false },
-  { name: "Collaboration", path: "/collaboration", external: false },
-  { name: "Contact", path: "/contact", external: false },
-];
+import { useLocale } from "@/context/LocaleContext";
+import LocalisationDrawer from "./LocalisationDrawer";
+import WhatsAppCTA from "./WhatsAppCTA";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
+  const { t, language, country, currency } = useLocale();
+  const reduce = useReducedMotion();
 
-  // Detect Zambia context and prefix internal paths so the same nav works for both sites.
-  const isZambiaRoute = location.pathname === "/zambia" || location.pathname.startsWith("/zambia/");
-  const basePath = isZambiaRoute ? "/zambia" : "";
-  const navItems = baseNavItems
-    // AI Fluency lives on the main site only.
-    .filter((item) => !(isZambiaRoute && item.path === "/ai-fluency"))
-    .map((item) =>
-      item.external ? item : { ...item, path: item.path === "/" ? basePath || "/" : `${basePath}${item.path}` }
-    );
-  const homePath = basePath || "/";
+  const navItems = [
+    { name: t.nav.howItWorks, path: "/how-it-works" },
+    { name: t.nav.solutions, path: "/solutions" },
+    { name: t.nav.industries, path: "/industries" },
+    { name: t.nav.pricing, path: "/pricing" },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,10 +33,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  const localeLabel = `${language.toUpperCase()} · ${country} · ${currency}`;
+
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
+        initial={reduce ? false : { y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -54,114 +47,120 @@ const Navbar = () => {
       >
         <div className="container-editorial">
           <div className="flex items-center justify-between h-20 md:h-24">
-            {/* Logo */}
-            <Link to={homePath} className="flex-shrink-0">
-              <img 
-                src={logo} 
-                alt="Social Currency" 
-                className="h-16 md:h-20 w-auto" 
-                style={{ imageRendering: 'auto' }}
+            <Link to="/" className="flex-shrink-0" aria-label={`${t.nav.skip} — Social Currency`}>
+              <img
+                src={logo}
+                alt="Social Currency"
+                width={240}
+                height={80}
+                className="h-14 md:h-20 w-auto"
               />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-10">
+            {/* Desktop navigation */}
+            <div className="hidden lg:flex items-center gap-8 xl:gap-10">
               {navItems.map((item) => (
-                item.external ? (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nav-link link-underline"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => trackNavClick(item.name, item.path, "desktop")}
-                    className={`nav-link link-underline ${
-                      location.pathname === item.path ? "text-primary" : ""
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => trackNavClick(item.name, item.path, "desktop")}
+                  className={`nav-link link-underline ${
+                    location.pathname.startsWith(item.path) ? "text-primary" : ""
+                  }`}
+                >
+                  {item.name}
+                </Link>
               ))}
+
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                aria-label={t.localisation.utilityLabel}
+                className="nav-link flex items-center gap-2 border border-border px-3 py-2 hover:border-primary"
+              >
+                <Globe size={13} aria-hidden="true" />
+                {localeLabel}
+              </button>
+
+              <WhatsAppCTA
+                label={t.nav.cta}
+                message={t.common.whatsappMessage}
+                location="navbar"
+                className="px-6 py-3"
+              />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile controls: localisation stays one tap away */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                aria-label={t.localisation.utilityLabel}
+                className="nav-link flex min-h-[2.75rem] items-center gap-2 border border-border px-3"
+              >
+                <Globe size={13} aria-hidden="true" />
+                {localeLabel}
+              </button>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="flex h-11 w-11 items-center justify-center"
+                aria-label={isMobileMenuOpen ? t.nav.close : t.nav.menu}
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background pt-24"
+            className="fixed inset-0 z-40 overflow-y-auto bg-background pt-24"
           >
             <div className="container-editorial">
-              <div className="flex flex-col gap-8 py-12">
+              <div className="flex flex-col gap-7 py-10">
                 {navItems.map((item, index) => (
                   <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
+                    key={item.path}
+                    initial={reduce ? false : { opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.06 }}
                   >
-                    {item.external ? (
-                      <a
-                        href={item.path}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="headline-card"
-                      >
-                        {item.name}
-                      </a>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        onClick={() => trackNavClick(item.name, item.path, "mobile")}
-                        className={`headline-card ${
-                          location.pathname === item.path ? "text-primary" : ""
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
+                    <Link
+                      to={item.path}
+                      onClick={() => trackNavClick(item.name, item.path, "mobile")}
+                      className={`headline-card ${
+                        location.pathname.startsWith(item.path) ? "text-primary" : ""
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <Link
-                    to={isZambiaRoute ? "/zambia/contact" : "/contact"}
-                    className="btn-primary inline-block mt-4"
-                  >
-                    Get in Touch
-                  </Link>
-                </motion.div>
+                <Link to="/contact" className="headline-card">
+                  {t.nav.contact}
+                </Link>
+                <div className="mt-4">
+                  <WhatsAppCTA
+                    label={t.nav.cta}
+                    message={t.common.whatsappMessage}
+                    location="mobile_menu"
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <LocalisationDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </>
   );
 };
