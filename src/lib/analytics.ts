@@ -76,3 +76,18 @@ export const trackLeadQualified = (recommendation: string) =>
 
 export const trackCheckoutStarted = (product: string) =>
   trackEvent("checkout_started", { product });
+
+/** Refinery pass #1 events. */
+export const trackHeroCta = () => trackEvent("hero_cta_clicked");
+
+export const trackSolutionSelected = (slug: string) =>
+  trackEvent("solution_selected", { solution: slug });
+
+export const trackIndustrySelected = (slug: string) =>
+  trackEvent("industry_selected", { industry: slug });
+
+export const trackPricingCta = (product: string) =>
+  trackEvent("pricing_cta_clicked", { product });
+
+export const trackDemoStep = (journey: string, step: string) =>
+  trackEvent("demo_step_completed", { journey, step });

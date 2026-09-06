@@ -6,6 +6,7 @@ import { useLocale } from "@/context/LocaleContext";
 import Price from "@/components/Price";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import LocalisationDrawer from "@/components/LocalisationDrawer";
+import { trackPricingCta } from "@/lib/analytics";
 
 const PricingSection = () => {
   const { t, currency } = useLocale();
@@ -38,7 +39,7 @@ const PricingSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.07 }}
-                className="flex flex-col bg-background p-8 md:p-10"
+                className="group flex flex-col bg-background p-8 transition-colors duration-500 hover:bg-secondary/30 md:p-10"
               >
                 <span className="subheadline mb-6 text-primary">{solution.number}</span>
                 <h3 className="headline-card mb-8">{copy.name}</h3>
@@ -48,7 +49,7 @@ const PricingSection = () => {
                 <p className="subheadline mb-10 text-foreground">
                   {t.solutions.delivery[solution.deliveryKey]}
                 </p>
-                <div className="mt-auto">
+                <div className="mt-auto" onClick={() => trackPricingCta(solution.slug)}>
                   <WhatsAppCTA
                     label={t.pricing.cta}
                     message={t.common.solutionMessage(copy.name)}
