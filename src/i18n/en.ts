@@ -75,6 +75,8 @@ export const en = {
   },
 
   hero: {
+    tapHint: "Tap to step through",
+    replay: "Replay",
     eyebrow: "Conversational commerce for Africa",
     headlineA: "Turn conversations",
     headlineB: "into customers.",
@@ -135,6 +137,7 @@ export const en = {
 
   solutions: {
     eyebrow: "Solutions",
+    bestStart: "Best place to start",
     headline: "Pick the problem you need solved.",
     from: "From",
     perMonth: "/ month",
@@ -214,6 +217,52 @@ export const en = {
   },
 
   demo: {
+    tryDemo: "Try the demo",
+    restart: "Start over",
+    business: "Chola Kitchen",
+    you: "You",
+    scanTitle: "Scan the code.",
+    scanCopy: "Pretend you’re ordering dinner.",
+    adapt: "This entire journey can be adapted to your business.",
+    demoNote: "Simulation only. No payment is processed and no data is collected.",
+    sim: {
+      welcome: "Hey 👋 Welcome to Chola Kitchen. What would you like today?",
+      categories: {
+        burgers: "Burgers",
+        pizza: "Pizza",
+        drinks: "Drinks",
+      },
+      items: {
+        "classic-burger": "Classic Burger",
+        "chicken-burger": "Chicken Burger",
+        "double-burger": "Double Burger",
+        margherita: "Margherita",
+        pepperoni: "Pepperoni",
+        "veg-pizza": "Garden Pizza",
+        soda: "Soda",
+        water: "Water",
+        juice: "Fresh juice",
+      },
+      categoryPrompt: (name: string) => `Here is what we have in ${name}.`,
+      qtyPrompt: "Great choice. How many would you like?",
+      summaryTitle: "Order summary",
+      fulfilPrompt: "Delivery or pickup?",
+      delivery: "Delivery",
+      pickup: "Pickup",
+      locationPrompt: "Which area are we delivering to?",
+      locations: ["Kabulonga", "Woodlands", "Rhodes Park"],
+      paymentPrompt: "How would you like to pay?",
+      payments: {
+        momo: "Mobile Money",
+        card: "Card",
+        cod: "Pay on delivery",
+      },
+      paid: "Payment received ✓",
+      confirmed: "Order confirmed ✓",
+      eta: "Rider on the way. 25–35 minutes.",
+      etaPickup: "Ready for pickup in 20 minutes.",
+      closing: "That’s conversational commerce.",
+    },
     headlineA: "Don’t read about it.",
     headlineB: "Try it.",
     copy: "Scan the code. Pretend you’re ordering dinner.",
@@ -306,6 +355,7 @@ export const en = {
   },
 
   trust: {
+    flow: ["Social", "WhatsApp", "Payment", "Fulfilment"],
     headlineA: "Built around the tools",
     headlineB: "your customers already use.",
     copy: "No invented statistics and no borrowed logos. Just the channels African commerce actually runs on.",

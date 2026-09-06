@@ -77,6 +77,8 @@ export const fr: Dictionary = {
   },
 
   hero: {
+    tapHint: "Appuyez pour avancer",
+    replay: "Rejouer",
     eyebrow: "Le commerce conversationnel pour l’Afrique",
     headlineA: "Transformez vos échanges",
     headlineB: "en clients.",
@@ -137,6 +139,7 @@ export const fr: Dictionary = {
 
   solutions: {
     eyebrow: "Solutions",
+    bestStart: "Le meilleur point de départ",
     headline: "Choisissez le problème à résoudre.",
     from: "À partir de",
     perMonth: "/ mois",
@@ -216,6 +219,52 @@ export const fr: Dictionary = {
   },
 
   demo: {
+    tryDemo: "Essayer la démo",
+    restart: "Recommencer",
+    business: "Chola Kitchen",
+    you: "Vous",
+    scanTitle: "Scannez le code.",
+    scanCopy: "Faites comme si vous commandiez à dîner.",
+    adapt: "Ce parcours complet peut être adapté à votre activité.",
+    demoNote: "Simulation uniquement. Aucun paiement n’est traité et aucune donnée n’est collectée.",
+    sim: {
+      welcome: "Bonjour 👋 Bienvenue chez Chola Kitchen. Que souhaitez-vous aujourd’hui ?",
+      categories: {
+        burgers: "Burgers",
+        pizza: "Pizzas",
+        drinks: "Boissons",
+      },
+      items: {
+        "classic-burger": "Burger classique",
+        "chicken-burger": "Burger poulet",
+        "double-burger": "Double burger",
+        margherita: "Margherita",
+        pepperoni: "Pepperoni",
+        "veg-pizza": "Pizza jardin",
+        soda: "Soda",
+        water: "Eau",
+        juice: "Jus frais",
+      },
+      categoryPrompt: (name: string) => `Voici notre sélection : ${name}.`,
+      qtyPrompt: "Excellent choix. Quelle quantité ?",
+      summaryTitle: "Récapitulatif de commande",
+      fulfilPrompt: "Livraison ou retrait ?",
+      delivery: "Livraison",
+      pickup: "Retrait",
+      locationPrompt: "Dans quel quartier livrons-nous ?",
+      locations: ["Kabulonga", "Woodlands", "Rhodes Park"],
+      paymentPrompt: "Comment souhaitez-vous payer ?",
+      payments: {
+        momo: "Mobile Money",
+        card: "Carte",
+        cod: "Paiement à la livraison",
+      },
+      paid: "Paiement reçu ✓",
+      confirmed: "Commande confirmée ✓",
+      eta: "Livreur en route. 25 à 35 minutes.",
+      etaPickup: "Prêt pour le retrait dans 20 minutes.",
+      closing: "Voilà le commerce conversationnel.",
+    },
     headlineA: "Ne le lisez pas.",
     headlineB: "Essayez-le.",
     copy: "Scannez le code. Faites comme si vous commandiez à dîner.",
@@ -308,6 +357,7 @@ export const fr: Dictionary = {
   },
 
   trust: {
+    flow: ["Réseaux sociaux", "WhatsApp", "Paiement", "Livraison"],
     headlineA: "Construit autour des outils",
     headlineB: "que vos clients utilisent déjà.",
     copy: "Pas de statistiques inventées ni de logos empruntés. Uniquement les canaux sur lesquels le commerce africain fonctionne vraiment.",
