@@ -427,7 +427,7 @@ export const fr: Dictionary = {
           "Je perds le fil des demandes",
           "J’ai besoin de plus de demandes",
           "Je dois organiser les commandes et rendez-vous",
-          "Je ne sais pas — aidez-moi à voir clair",
+          "Je ne sais pas. Aidez-moi à voir clair",
         ],
       },
     ],

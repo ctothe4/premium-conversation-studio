@@ -145,8 +145,8 @@ export const en = {
     whatYouGet: "What you get",
     delivery: {
       delivery72: "Live in 72 hours",
-      delivery57: "5–7 days",
-      delivery710: "7–10 days",
+      delivery57: "5 to 7 days",
+      delivery710: "7 to 10 days",
       deliveryOngoing: "Ongoing, monthly",
     },
     deliveryNote:
@@ -259,7 +259,7 @@ export const en = {
       },
       paid: "Payment received ✓",
       confirmed: "Order confirmed ✓",
-      eta: "Rider on the way. 25–35 minutes.",
+      eta: "Rider on the way. 25 to 35 minutes.",
       etaPickup: "Ready for pickup in 20 minutes.",
       closing: "That’s conversational commerce.",
     },
@@ -415,7 +415,7 @@ export const en = {
       },
       {
         q: "Roughly how many customer enquiries do you receive in a typical week?",
-        options: ["Under 10", "10–30", "30–100", "100+"],
+        options: ["Under 10", "10 to 30", "30 to 100", "100+"],
       },
       {
         q: "What’s the biggest problem right now?",
@@ -425,7 +425,7 @@ export const en = {
           "I lose track of enquiries",
           "I need more enquiries",
           "I need bookings/orders organised",
-          "I’m not sure — help me diagnose it",
+          "I’m not sure. Help me diagnose it",
         ],
       },
     ],
