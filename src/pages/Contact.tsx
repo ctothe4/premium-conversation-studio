@@ -1,35 +1,42 @@
-import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ContactForm from "@/components/ContactForm";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
+import { useLocale } from "@/context/LocaleContext";
+import { SITE } from "@/config/site";
 
 const Contact = () => {
+  const { t } = useLocale();
+
   return (
     <Layout>
-      <section className="section-padding">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="lg:col-span-5"
-            >
-              <span className="subheadline block mb-8">Contact</span>
-              <h1 className="headline-hero mb-10">Let's Talk.</h1>
-              <div className="divider-refined mb-10" />
-              <p className="body-large text-muted-foreground max-w-md">
-                Tell us what you're building. We'll tell you if we're the right fit to help.
-              </p>
-            </motion.div>
+      <Seo title={t.meta.contact.title} description={t.meta.contact.description} path="/contact" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="lg:col-span-7"
-            >
-              <ContactForm />
-            </motion.div>
+      <section className="section-padding-sm">
+        <div className="container-editorial">
+          <span className="subheadline mb-6 block">{t.contact.eyebrow}</span>
+          <h1 className="headline-section mb-10 max-w-3xl">{t.contact.headline}</h1>
+          <p className="body-large mb-12 max-w-xl text-muted-foreground">{t.contact.body}</p>
+
+          <WhatsAppCTA
+            label={t.contact.whatsapp}
+            message={t.common.whatsappMessage}
+            location="contact_page"
+          />
+        </div>
+      </section>
+
+      <section className="section-padding border-t border-border">
+        <div className="container-editorial">
+          <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              <h2 className="headline-card mb-6">{t.contact.orForm}</h2>
+              <p className="body-small mb-6 text-muted-foreground">{t.contact.response}</p>
+              <a href={`mailto:${SITE.email}`} className="nav-link link-underline">
+                {SITE.email}
+              </a>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
