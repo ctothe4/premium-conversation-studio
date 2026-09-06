@@ -14,6 +14,7 @@ import TrustSection from "@/components/sections/TrustSection";
 import Qualifier from "@/components/sections/Qualifier";
 import FinalCta from "@/components/sections/FinalCta";
 import { useLocale } from "@/context/LocaleContext";
+import { trackHeroCta } from "@/lib/analytics";
 
 const Index = () => {
   const { t } = useLocale();
@@ -64,12 +65,14 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="flex flex-col gap-4 sm:flex-row sm:items-center"
               >
+                <span onClick={trackHeroCta}>
                 <WhatsAppCTA
                   label={t.hero.primary}
                   message={t.common.whatsappMessage}
                   location="hero"
                   product="whatsapp-store"
                 />
+                </span>
                 <a
                   href="#how-it-works"
                   className="nav-link link-underline inline-flex min-h-[3rem] items-center gap-2"

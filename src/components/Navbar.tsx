@@ -46,14 +46,20 @@ const Navbar = () => {
         }`}
       >
         <div className="container-editorial">
-          <div className="flex items-center justify-between h-20 md:h-24">
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ${
+              isScrolled ? "h-16 md:h-18" : "h-20 md:h-24"
+            }`}
+          >
             <Link to="/" className="flex-shrink-0" aria-label={`${t.nav.skip} — Social Currency`}>
               <img
                 src={logo}
                 alt="Social Currency"
                 width={240}
                 height={80}
-                className="h-14 md:h-20 w-auto"
+                className={`w-auto transition-all duration-300 ${
+                  isScrolled ? "h-10 md:h-14" : "h-14 md:h-20"
+                }`}
               />
             </Link>
 
