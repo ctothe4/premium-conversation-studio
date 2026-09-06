@@ -5,12 +5,17 @@ import { SOLUTIONS } from "@/config/products";
 import { useLocale } from "@/context/LocaleContext";
 import Price from "@/components/Price";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
-import { trackSolutionViewed } from "@/lib/analytics";
+import { trackSolutionViewed, trackSolutionSelected } from "@/lib/analytics";
 
 interface Props {
   showEyebrow?: boolean;
 }
 
+/**
+ * Solutions.
+ * Editorial product presentation, not SaaS cards. The commercial facts
+ * (price, delivery, CTA) sit together at the foot of every product.
+ */
 const SolutionsSection = ({ showEyebrow = true }: Props) => {
   const { t } = useLocale();
   const reduce = useReducedMotion();
@@ -24,6 +29,7 @@ const SolutionsSection = ({ showEyebrow = true }: Props) => {
         <div className="grid grid-cols-1 gap-px bg-border/60 lg:grid-cols-2">
           {SOLUTIONS.map((solution, i) => {
             const copy = t.solutions.items[solution.slug];
+            const isEntry = i === 0;
             return (
               <motion.article
                 key={solution.slug}
@@ -32,12 +38,27 @@ const SolutionsSection = ({ showEyebrow = true }: Props) => {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: i * 0.08 }}
                 onViewportEnter={() => trackSolutionViewed(solution.slug)}
-                className="flex flex-col bg-background p-8 md:p-14"
+                tabIndex={0}
+                className="group relative flex flex-col bg-background p-8 transition-colors duration-500 focus-within:bg-secondary/30 hover:bg-secondary/30 focus-visible:outline-none md:p-14"
               >
-                <span className="subheadline mb-8 text-primary">
-                  {solution.number} — {copy.name}
-                </span>
-                <h3 className="headline-card mb-6 text-2xl md:text-3xl lg:text-[2.25rem]">
+                {/* Directional accent: turquoise travels along the product edge. */}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full group-focus-within:w-full"
+                />
+
+                <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <span className="subheadline text-primary">
+                    {solution.number} — {copy.name}
+                  </span>
+                  {isEntry && (
+                    <span className="border border-border px-2 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
+                      {t.solutions.bestStart}
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="headline-card mb-6 text-2xl transition-colors duration-300 group-hover:text-primary group-focus-within:text-primary md:text-3xl lg:text-[2.25rem]">
                   {copy.headlineA}
                   <br />
                   {copy.headlineB}
@@ -60,18 +81,24 @@ const SolutionsSection = ({ showEyebrow = true }: Props) => {
                     {t.solutions.delivery[solution.deliveryKey]}
                   </p>
                   <div className="flex flex-wrap items-center gap-6">
-                    <WhatsAppCTA
-                      label={copy.cta}
-                      message={t.common.solutionMessage(copy.name)}
-                      location="solutions_section"
-                      product={solution.slug}
-                    />
+                    <span onClick={() => trackSolutionSelected(solution.slug)}>
+                      <WhatsAppCTA
+                        label={copy.cta}
+                        message={t.common.solutionMessage(copy.name)}
+                        location="solutions_section"
+                        product={solution.slug}
+                      />
+                    </span>
                     <Link
                       to={`/solutions/${solution.slug}`}
-                      className="nav-link link-underline inline-flex items-center gap-2"
+                      className="nav-link link-underline inline-flex min-h-[2.75rem] items-center gap-2"
                     >
                       {t.solutions.whatYouGet}
-                      <ArrowRight size={13} aria-hidden="true" />
+                      <ArrowRight
+                        size={13}
+                        aria-hidden="true"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
                     </Link>
                   </div>
                 </div>
