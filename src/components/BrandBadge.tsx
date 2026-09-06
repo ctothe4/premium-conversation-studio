@@ -1,4 +1,4 @@
-import logo from "@/assets/sc-logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 const BrandBadge = () => {
   return (
