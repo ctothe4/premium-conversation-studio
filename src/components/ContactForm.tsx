@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
+import { useLocale } from "@/context/LocaleContext";
+import { trackLeadStarted } from "@/lib/analytics";
 
 const ContactForm = () => {
+  const { t } = useLocale();
+  const f = t.contact.form;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,22 +22,21 @@ const ContactForm = () => {
     setIsSubmitting(true);
     setError(null);
 
-    const { error: insertError } = await supabase
-      .from("contact_submissions")
-      .insert({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        company: formData.company.trim() || null,
-        message: formData.message.trim(),
-      });
+    const { error: insertError } = await supabase.from("contact_submissions").insert({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      company: formData.company.trim() || null,
+      message: formData.message.trim(),
+    });
 
     setIsSubmitting(false);
 
     if (insertError) {
-      setError("Something went wrong. Please try again.");
+      setError(f.error);
       return;
     }
 
+    trackLeadStarted("contact_form");
     setIsSubmitted(true);
     setFormData({ name: "", email: "", company: "", message: "" });
   };
@@ -51,73 +54,101 @@ const ContactForm = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="py-16"
+        role="status"
       >
-        <h3 className="headline-card text-primary mb-6">
-          Consider this the beginning.
-        </h3>
-        <p className="body-large text-muted-foreground">
-          We respond within 2 business days.
-        </p>
+        <h3 className="headline-card text-primary mb-6">{f.successTitle}</h3>
+        <p className="body-large text-muted-foreground">{t.contact.response}</p>
       </motion.div>
     );
   }
 
+  const fieldClass =
+    "w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500";
+
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
       <div>
-        <label htmlFor="name" className="subheadline block mb-4">Name</label>
+        <label htmlFor="name" className="subheadline block mb-4">
+          {f.name}
+        </label>
         <input
-          type="text" id="name" name="name" value={formData.name}
-          onChange={handleChange} required maxLength={200}
-          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
-          placeholder="Your name"
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          maxLength={200}
+          className={fieldClass}
+          placeholder={f.namePlaceholder}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="subheadline block mb-4">Email</label>
+        <label htmlFor="email" className="subheadline block mb-4">
+          {f.email}
+        </label>
         <input
-          type="email" id="email" name="email" value={formData.email}
-          onChange={handleChange} required maxLength={320}
-          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
-          placeholder="your@email.com"
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          maxLength={320}
+          className={fieldClass}
+          placeholder={f.emailPlaceholder}
         />
       </div>
 
       <div>
-        <label htmlFor="company" className="subheadline block mb-4">Company</label>
+        <label htmlFor="company" className="subheadline block mb-4">
+          {f.company}
+        </label>
         <input
-          type="text" id="company" name="company" value={formData.company}
-          onChange={handleChange} maxLength={200}
-          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500"
-          placeholder="Your company (optional)"
+          type="text"
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          maxLength={200}
+          className={fieldClass}
+          placeholder={f.companyPlaceholder}
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="subheadline block mb-4">Message</label>
+        <label htmlFor="message" className="subheadline block mb-4">
+          {f.message}
+        </label>
         <textarea
-          id="message" name="message" value={formData.message}
-          onChange={handleChange} required maxLength={5000} rows={5}
-          className="w-full bg-transparent border-b border-border py-5 body-regular focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
-          placeholder="Tell us what you're building..."
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          maxLength={5000}
+          rows={5}
+          className={`${fieldClass} resize-none`}
+          placeholder={f.messagePlaceholder}
         />
       </div>
 
       {error && (
-        <p className="body-small text-destructive" role="alert">{error}</p>
+        <p className="body-small text-destructive" role="alert">
+          {error}
+        </p>
       )}
 
       <div className="flex flex-col gap-6">
         <button
-          type="submit" disabled={isSubmitting}
-          className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed self-start"
+          type="submit"
+          disabled={isSubmitting}
+          className="btn-primary self-start disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isSubmitting ? "Sending..." : "Send"}
+          {isSubmitting ? f.sending : f.send}
         </button>
-        <p className="body-small text-muted-foreground">
-          We respond within 2 business days.
-        </p>
+        <p className="body-small text-muted-foreground">{t.contact.response}</p>
       </div>
     </form>
   );
