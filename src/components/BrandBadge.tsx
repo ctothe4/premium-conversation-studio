@@ -1,4 +1,4 @@
-import logo from "@/assets/sc-logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 const BrandBadge = () => {
   return (
@@ -10,7 +10,7 @@ const BrandBadge = () => {
       className="fixed bottom-4 left-4 z-50 block h-12 w-12 md:h-14 md:w-14 transition-transform hover:scale-105"
     >
       <img
-        src={logo.url}
+        src={logo}
         alt="Social Currency"
         className="h-full w-full object-contain"
       />

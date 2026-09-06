@@ -411,6 +411,20 @@ export const en = {
     whatsapp: "Message us on WhatsApp",
     orForm: "Or send a message",
     response: "We respond within 2 business days.",
+    form: {
+      name: "Name",
+      namePlaceholder: "Your name",
+      email: "Email",
+      emailPlaceholder: "your@email.com",
+      company: "Company",
+      companyPlaceholder: "Your company (optional)",
+      message: "Message",
+      messagePlaceholder: "Tell us what you're building...",
+      send: "Send",
+      sending: "Sending...",
+      error: "Something went wrong. Please try again.",
+      successTitle: "Consider this the beginning.",
+    },
   },
 
   footer: {

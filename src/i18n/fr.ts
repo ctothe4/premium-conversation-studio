@@ -413,6 +413,20 @@ export const fr: Dictionary = {
     whatsapp: "Nous écrire sur WhatsApp",
     orForm: "Ou envoyer un message",
     response: "Nous répondons sous 2 jours ouvrés.",
+    form: {
+      name: "Nom",
+      namePlaceholder: "Votre nom",
+      email: "E-mail",
+      emailPlaceholder: "vous@exemple.com",
+      company: "Entreprise",
+      companyPlaceholder: "Votre entreprise (facultatif)",
+      message: "Message",
+      messagePlaceholder: "Dites-nous ce que vous construisez...",
+      send: "Envoyer",
+      sending: "Envoi...",
+      error: "Une erreur est survenue. Merci de réessayer.",
+      successTitle: "C’est le début de quelque chose.",
+    },
   },
 
   footer: {
